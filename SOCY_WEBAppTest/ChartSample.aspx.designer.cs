@@ -22,21 +22,21 @@ namespace SOCY_WEBAppTest {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// txtYear1 control.
+        /// ddlCountries control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtYear1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCountries;
         
         /// <summary>
-        /// txtYear2 control.
+        /// rblChartType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtYear2;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblChartType;
     }
 }

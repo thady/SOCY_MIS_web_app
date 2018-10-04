@@ -133,6 +133,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                      <li>
                                         <a href="CapturedDataReports.aspx?reportid=benYouthTrainingInventory">Youth Training Inventory</a>
                                     </li>
+                                     <li>
+                                        <a href="CapturedDataReports.aspx?reportid=YouthSavingsRegister">Youth Savings Register</a>
+                                    </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
@@ -202,7 +205,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <a href="CapturedDataReports.aspx?reportid=HIP">Household improvement plan</a>
                                     </li>
                                     <li>
-                                        <a href="CapturedDataReports.aspx?reportid=RASM">Risk assessment register</a>
+                                        <a href="CapturedDataReports.aspx?reportid=RASMNEW">Peadiatric Risk Assessment</a>
+                                    </li>
+                                    <li>
+                                        <a href="CapturedDataReports.aspx?reportid=RASM">Risk assessment register(Old)</a>
                                     </li>
                                     <li>
                                         <a href="CapturedDataReports.aspx?reportid=ovcViralLoadMonitoring">OVC Viral Load Monitoring Reports</a>

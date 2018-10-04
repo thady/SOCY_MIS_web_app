@@ -117,6 +117,7 @@ namespace SOCY_WEBAppTest
         public const string cRCSILCSavingsRegister = "SILCSavingsRegister";
         public const string cRCHIP = "HIP";
         public const string cRCRAS = "RASM";
+        public const string cRCRASNEW = "RASMNEW";
         public const string cRCLinkages = "Linkages";
         public const string CRCommunityTrainingRegister = "CommunityTrainingRegister";
         public const string CRHomeVisitAggregate = "hv_aggregate";
@@ -129,6 +130,7 @@ namespace SOCY_WEBAppTest
         public const string CRovcViralLoadMonitoring = "ovcViralLoadMonitoring";
         public const string CRbeneficiarySchoolReadiness = "beneficiarySchoolReadiness";
         public const string CRbenYouthTrainingInventory = "benYouthTrainingInventory";
+        public const string CRYouthSavingsRegister = "YouthSavingsRegister";
         #endregion Reports Capture
 
         #region Trigger Action

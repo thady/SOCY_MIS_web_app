@@ -1261,6 +1261,50 @@ namespace SOCY_WEBAppTest
 
                         ds = ReportsCapturedDataDB.GetReportData();
                         break;
+                    case utilSOCYWeb.cRCRASNEW:
+                        ReportsCapturedDataDB.reportType = utilSOCYWeb.cRCRASNEW;
+                        ReportsCapturedDataDB.prt_id = cboPartner.SelectedValue.ToString() != string.Empty ? cboPartner.SelectedValue.ToString() : null;
+                        ReportsCapturedDataDB.cso = cboCSO.SelectedValue != string.Empty ? cboCSO.SelectedValue.ToString() : null;
+                        ReportsCapturedDataDB.region = cboRegion.SelectedValue != string.Empty ? cboRegion.SelectedValue.ToString() : null;
+                        ReportsCapturedDataDB.district = cboDistrict.SelectedValue != string.Empty ? cboDistrict.SelectedValue.ToString() : null;
+                        ReportsCapturedDataDB.subcounty = cboSubCounty.SelectedValue != string.Empty ? cboSubCounty.SelectedValue.ToString() : null;
+                        ReportsCapturedDataDB.parish = cboParish.SelectedValue != string.Empty ? cboParish.SelectedValue.ToString() : null;
+
+                        #region Dates
+                        if (txtCreateDateFrom.Text != string.Empty)
+                        {
+                            ReportsCapturedDataDB.datecreateFrom = Convert.ToDateTime(txtCreateDateFrom.Text);
+                        }
+                        else
+                            ReportsCapturedDataDB.datecreateFrom = null;
+
+
+                        if (txtCreateDateTo.Text != string.Empty) { ReportsCapturedDataDB.datecreateTo = Convert.ToDateTime(txtCreateDateTo.Text); }
+                        else
+                            ReportsCapturedDataDB.datecreateTo = null;
+
+                        //if (txtDateFrom.Text != string.Empty) { ReportsCapturedDataDB.uploaddateFrom = Convert.ToDateTime(txtDateFrom.Text); }
+                        //else
+                        //    ReportsCapturedDataDB.uploaddateFrom = null;
+
+                        //if (txtDateTo.Text != string.Empty) { ReportsCapturedDataDB.uploaddateTo = Convert.ToDateTime(txtDateTo.Text); }
+                        //else
+                        //    ReportsCapturedDataDB.uploaddateTo = null;
+
+                        //if (txtProcessDateFrom.Text != string.Empty) { ReportsCapturedDataDB.processdateFrom = Convert.ToDateTime(txtProcessDateFrom.Text); }
+                        //else
+                        //    ReportsCapturedDataDB.processdateFrom = null;
+
+                        //if (txtProcessDateTo.Text != string.Empty) { ReportsCapturedDataDB.processdateTo = Convert.ToDateTime(txtProcessDateTo.Text); }
+                        //else
+                        //    ReportsCapturedDataDB.processdateTo = null;
+
+                        #endregion Dates
+
+                        //ReportsCapturedDataDB.lastuploadOffice = cboLastuploadOffice.SelectedValue != string.Empty ? cboLastuploadOffice.SelectedValue.ToString() : null;
+
+                        ds = ReportsCapturedDataDB.GetReportData();
+                        break;
                     case utilSOCYWeb.cRCLinkages:
                         ReportsCapturedDataDB.reportType = utilSOCYWeb.cRCLinkages;
                         ReportsCapturedDataDB.prt_id = cboPartner.SelectedValue.ToString() != string.Empty ? cboPartner.SelectedValue.ToString() : null;
@@ -1553,7 +1597,34 @@ namespace SOCY_WEBAppTest
                         else
                             ReportsCapturedDataDB.datecreateTo = null;
 
-                        #endregion Dates
+                        #endregion Dates 
+
+                        ds = ReportsCapturedDataDB.GetReportData();
+                        break;
+
+                    case utilSOCYWeb.CRYouthSavingsRegister:
+                        ReportsCapturedDataDB.reportType = utilSOCYWeb.CRYouthSavingsRegister;
+                        ReportsCapturedDataDB.prt_id = cboPartner.SelectedValue.ToString() != string.Empty ? cboPartner.SelectedValue.ToString() : null;
+                        ReportsCapturedDataDB.cso = cboCSO.SelectedValue != string.Empty ? cboCSO.SelectedValue.ToString() : null;
+                        ReportsCapturedDataDB.region = cboRegion.SelectedValue != string.Empty ? cboRegion.SelectedValue.ToString() : null;
+                        ReportsCapturedDataDB.district = cboDistrict.SelectedValue != string.Empty ? cboDistrict.SelectedValue.ToString() : null;
+                        ReportsCapturedDataDB.subcounty = cboSubCounty.SelectedValue != string.Empty ? cboSubCounty.SelectedValue.ToString() : null;
+                        ReportsCapturedDataDB.parish = cboParish.SelectedValue != string.Empty ? cboParish.SelectedValue.ToString() : null;
+
+                        #region Dates
+                        if (txtCreateDateFrom.Text != string.Empty)
+                        {
+                            ReportsCapturedDataDB.datecreateFrom = Convert.ToDateTime(txtCreateDateFrom.Text);
+                        }
+                        else
+                            ReportsCapturedDataDB.datecreateFrom = null;
+
+
+                        if (txtCreateDateTo.Text != string.Empty) { ReportsCapturedDataDB.datecreateTo = Convert.ToDateTime(txtCreateDateTo.Text); }
+                        else
+                            ReportsCapturedDataDB.datecreateTo = null;
+
+                        #endregion Dates 
 
                         ds = ReportsCapturedDataDB.GetReportData();
                         break;
@@ -1736,8 +1807,12 @@ namespace SOCY_WEBAppTest
                     lblDateFrom.Text = "HIP Date From:";
                     break;
                 case "RASM":
-                    lblReportTitle.Text = "Risk Assessment Register";
+                    lblReportTitle.Text = "Risk Assessment Register Archive";
                     lblDateFrom.Text = "Date From:";
+                    break;
+                case "RASMNEW":
+                    lblReportTitle.Text = "Risk Assessment Register";
+                    lblDateFrom.Text = "Date From:"; 
                     break;
                 case "Linkages":
                     lblReportTitle.Text = "Linkages for Economic Strengthening";
@@ -1769,6 +1844,9 @@ namespace SOCY_WEBAppTest
                     break;
                 case "beneficiarySchoolReadiness":
                     lblReportTitle.Text = "Beneficiary School Readiness Assessment Report";
+                    break;
+                case "YouthSavingsRegister":
+                    lblReportTitle.Text = "Youth Savings Report";
                     break;
             }
         }
