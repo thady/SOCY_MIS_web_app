@@ -43,6 +43,9 @@
     <Reference Include="DocumentFormat.OpenXml">
       <HintPath>..\..\SOCY_WEB\packages\DocumentFormat.OpenXmlSDK.2.0\lib\Net35\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
+    <Reference Include="FusionCharts">
+      <HintPath>Dlls\FusionCharts.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PSAUtilsWeb">
       <HintPath>..\..\..\..\..\Desktop\SOCY Transfer\SOCY Transfer\PSAUtilsWeb\PSAUtilsWeb\obj\Debug\PSAUtilsWeb.dll</HintPath>
@@ -94,6 +97,7 @@
     <Content Include="Dreams_dashboard_reports.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fusion_graphs_test.aspx" />
     <Content Include="Hiv_stat_indicators.aspx" />
     <Content Include="Home_visit_aggregate.aspx" />
     <Content Include="Households_beneficiaries_stats.aspx" />
@@ -118,6 +122,7 @@
     <Content Include="js\clndr.js" />
     <Content Include="js\custom.js" />
     <Content Include="js\d3.v3.js" />
+    <Content Include="js\fusioncharts.js" />
     <Content Include="WebService1.asmx" />
     <None Include="js\jquery-1.4.1-vsdoc.js" />
     <Content Include="js\jquery-1.4.1.js" />
@@ -196,6 +201,13 @@
     </Compile>
     <Compile Include="Dreams_dashboard_reports.aspx.designer.cs">
       <DependentUpon>Dreams_dashboard_reports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fusion_graphs_test.aspx.cs">
+      <DependentUpon>fusion_graphs_test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fusion_graphs_test.aspx.designer.cs">
+      <DependentUpon>fusion_graphs_test.aspx</DependentUpon>
     </Compile>
     <Compile Include="Hiv_stat_indicators.aspx.cs">
       <DependentUpon>Hiv_stat_indicators.aspx</DependentUpon>
@@ -316,6 +328,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataEntryTracker\" />
+    <Folder Include="Dlls\" />
+    <Folder Include="FusionChartsXT\" />
     <Folder Include="Report_Download\" />
   </ItemGroup>
   <PropertyGroup>

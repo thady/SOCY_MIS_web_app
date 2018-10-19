@@ -40,6 +40,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="js/jquery.dynDateTime.min.js" type="text/javascript"></script>
     <script src="js/calendar-en.min.js" type="text/javascript"></script>
     <link href="css/calendar-blue.css" rel="stylesheet" type="text/css" />
+     <script type="text/javascript" src="js/fusioncharts.js"></script>
+    <script type="text/javascript" src="js/themes/fusioncharts.theme.fusion.js"></script>
+     <script type="text/javascript" src="js/themes/fusioncharts.theme.gammel.js"></script>
+     <script type="text/javascript" src="js/themes/fusioncharts.theme.candy.js"></script>
+     <script type="text/javascript" src="js/themes/fusioncharts.theme.zune.js"></script>
+     <script type="text/javascript" src="js/themes/fusioncharts.theme.ocean.js"></script>
+     <script type="text/javascript" src="js/themes/fusioncharts.theme.carbon.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -139,10 +146,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <a href="CapturedDataReports.aspx?reportid=CommunityTrainingRegister">Community Training Register</a>
                                     </li>
 
-                                     <li>
+                                    <li>
                                         <a href="CapturedDataReports.aspx?reportid=benYouthTrainingInventory">Youth Training Inventory</a>
                                     </li>
-                                     <li>
+                                    <li>
                                         <a href="CapturedDataReports.aspx?reportid=YouthSavingsRegister">Youth Savings Register</a>
                                     </li>
                                 </ul>
@@ -213,13 +220,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <li>
                                         <a href="CapturedDataReports.aspx?reportid=HIP">Household improvement plan</a>
                                     </li>
-                                     <li>
+                                    <li>
                                         <a href="CapturedDataReports.aspx?reportid=RASMNEW">Peadiatric Risk Assessment</a>
                                     </li>
                                     <li>
                                         <a href="CapturedDataReports.aspx?reportid=RASM">Risk assessment register(Old)</a>
                                     </li>
-                                    
+
                                     <li>
                                         <a href="CapturedDataReports.aspx?reportid=ovcViralLoadMonitoring">OVC Viral Load Monitoring Reports</a>
                                     </li>
@@ -361,126 +368,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </nav>
             <div id="page-wrapper">
                 <div class="graphs">
-                    <div class="col_3">
-                        <div class="col-md-3 widget widget1">
-                            <div class="r3_counter_box">
-                                <i class="pull-left fa fa-users user3 icon-rounded"></i>
-                                <div class="stats">
-                                    <h5><strong>
-                                        <asp:Label ID="lblTotalHouseholds" runat="server" Text=""></asp:Label>
-                                    </strong></h5>
-                                    <span>Total Households</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 widget widget1">
-                            <div class="r3_counter_box">
-                                <i class="pull-left fa fa-users user1 icon-rounded"></i>
-                                <div class="stats">
-                                    <h5><strong>
-                                        <asp:Label ID="lblTotalBen" runat="server" Text=""></asp:Label>
-                                    </strong></h5>
-                                    <span>Total Beneficiaries</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 widget widget1">
-                            <div class="r3_counter_box">
-                                <i class="pull-left fa fa-dollar dollar1 icon-rounded"></i>
-                                <div class="stats">
-                                    <h5><strong>
-                                        <asp:Label ID="lblTotalSILCGroups" runat="server" Text=""></asp:Label></strong></h5>
-                                    <span>Total SILC Groups</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 widget">
-                            <div class="r3_counter_box">
-                                <i class="pull-left fa fa-dollar dollar1 icon-rounded"></i>
-                                <div class="stats">
-                                    <h5><strong>
-                                        <asp:Label ID="lblSilcMembers" runat="server" Text=""></asp:Label>
-                                    </strong></h5>
-                                    <span>Silc Grp Members</span>
-                                </div>
-                            </div>
+
+
+
+
+
+                    <div class="col-md-6  stats-info" style="margin-left: 0px; height: 400px">
+                       
+                        <div class="panel-body" style="height: 400px">
+                            <asp:Literal ID="lit_active_households" runat="server"></asp:Literal>
                         </div>
                         <div class="clearfix"></div>
                     </div>
 
-                    <div class="panel-footer" style="margin-bottom: 0px"></div>
-
-
-
-                    <div class="col-md-12  stats-info" style="margin-left: 0px; height: 360px">
-                        <%-- <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <asp:Label ID="lblHeader" runat="server" Text="Data upload status:"></asp:Label><asp:Label ID="lblQuarter" runat="server" Text="" ForeColor="#0066ff"></asp:Label></h4>
-
-                        </div>--%>
-                        <div class="panel-body" style="height:355px">
-                            <asp:GridView ID="gdvDataEntry" runat="server" AllowPaging="True" AutoGenerateColumns="false" PageSize="5" class="table table-bordered" OnPageIndexChanging="gdvDataEntry_PageIndexChanging">
-                                <Columns>
-                                    <asp:BoundField DataField="dst_name" HeaderText="District"
-                                        SortExpression="dst_name"></asp:BoundField>
-                                    <asp:BoundField DataField="hv" HeaderText="Home Visits"
-                                        SortExpression="hv"></asp:BoundField>
-                                    <asp:BoundField DataField="Referrals" HeaderText="Referrals"
-                                        SortExpression="Referrals"></asp:BoundField>
-                                    <asp:BoundField DataField="RAS" HeaderText="Risk Assessments"
-                                        SortExpression="RAS"></asp:BoundField>
-                                    <asp:BoundField DataField="HIP" HeaderText="Household Improvement Plan"
-                                        SortExpression="HIP"></asp:BoundField>
-                                    <asp:BoundField DataField="coomunity_tr" HeaderText="Community Training Register"
-                                        SortExpression="coomunity_tr"></asp:BoundField>
-                                </Columns>
-                            </asp:GridView>
-
-                            <asp:Chart ID="DataEntryChart" runat="server" BorderlineWidth="0" Width="1200px" Height="350px">
-                                <Series>
-                                    <asp:Series Name="Series1" XValueMember="dst_name" YValueMembers="hv"
-                                        LegendText="Home Visits" IsValueShownAsLabel="false" ChartArea="ChartArea1" MarkerBorderColor="#DBDBDB">
-                                    </asp:Series>
-
-                                    <asp:Series Name="Series2" XValueMember="dst_name" YValueMembers="Referrals"
-                                        LegendText="Referrals" IsValueShownAsLabel="false" ChartArea="ChartArea1" MarkerBorderColor="#DBDBDB">
-                                    </asp:Series>
-
-                                    <asp:Series Name="Series3" XValueMember="dst_name" YValueMembers="RAS"
-                                        LegendText="Risk Assessment" IsValueShownAsLabel="false" ChartArea="ChartArea1" MarkerBorderColor="#DBDBDB">
-                                    </asp:Series>
-
-                                    <asp:Series Name="Series4" XValueMember="dst_name" YValueMembers="HIP"
-                                        LegendText="Household Improvement Plan" IsValueShownAsLabel="false" ChartArea="ChartArea1" MarkerBorderColor="#DBDBDB">
-                                    </asp:Series>
-
-                                    <asp:Series Name="Series5" XValueMember="dst_name" YValueMembers="coomunity_tr"
-                                        LegendText="Community Training Register" IsValueShownAsLabel="false" ChartArea="ChartArea1" MarkerBorderColor="#DBDBDB">
-                                    </asp:Series>
-                                </Series>
-
-                                <Legends>
-                                    <asp:Legend Title="Tools" Alignment="Near"/>
-                                </Legends>
-
-                                <Titles>
-                                    <asp:Title Docking="Top" Text="Number of Tools entered in the system for the current Quarter" />
-                                </Titles>
-
-                                <ChartAreas>
-                                    <asp:ChartArea Name="ChartArea1">
-                                        <AxisX Interval="1" TextOrientation="Rotated90"></AxisX>
-
-                                    </asp:ChartArea>
-                                </ChartAreas>
-                            </asp:Chart>
+                     <div class="col-md-6  stats-info" style="margin-left: 0px; height: 400px">
+                       
+                        <div class="panel-body" style="height: 400px">
+                            <asp:Literal ID="lit_active_household_members" runat="server"></asp:Literal>
                         </div>
                         <div class="clearfix"></div>
                     </div>
+
+
+
+
+
 
                     <div class="clearfix"></div>
 
-                    <div class="col-md-6  stats-info" style="height: 492px;margin-top:10px">
+                    <div class="col-md-6  stats-info" style="height: 492px; margin-top: 10px">
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <asp:Label ID="Label3" runat="server" Text="OVC HIVSTAT(<18):"></asp:Label><asp:Label ID="lblovchiv_stat" runat="server" Text="" ForeColor="#0066ff"></asp:Label>

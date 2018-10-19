@@ -7,8 +7,12 @@ using System.Web.UI.WebControls;
 
 using SOCY_WEBAppTest.AppCode;
 using System.Data;
-using System.Web.UI.DataVisualization.Charting;
+//using System.Web.UI.DataVisualization.Charting;
 using System.Web.Caching;
+using InfoSoftGlobal;
+using FusionCharts.Charts;
+using System.Data.SqlClient;
+using System.Text;
 
 namespace SOCY_WEBAppTest
 {
@@ -27,17 +31,146 @@ namespace SOCY_WEBAppTest
                 }
                 else
                 {
+
+                    LoadChart();
+                    LoadChart_beneficiaries();
+
                     LoadDistrict();
                     cboDistrict_SelectedIndexChanged(cboDistrict, null);
                     Lookups.ReturnCurrentQuarterDates();
                     SetQuarterName();
-                    return_Stats();
-                    returnDataEntryReports();
+                    //return_Stats();
+                    //returnDataEntryReports();
                     LoadOVC_stat_Data();
                     ReturnOvcServer_Stats("Main");
                 }
             }
             
+        }
+
+        protected void LoadChart()
+        {
+            // Construct the connection string to interface with the SQL Server Database
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["SOCY_MIS"].ToString());
+
+            // Initialize the string which would contain the chart data in XML format
+            StringBuilder xmlStr = new StringBuilder();
+
+            // Provide the relevant customization attributes to the chart
+            xmlStr.Append("<chart caption='Number of Active households by district' xAxisName='District' yAxisName='Households' showValues='0' formatNumberScale='0' showBorder='1' theme='fusion'>");
+
+            // Create a SQLConnection object 
+            using (conn)
+            {
+                // Establish the connection with the database
+                conn.Open();
+
+                // Construct and execute SQL query which would return the total amount of sales for each year
+                string strsQL = @"SELECT dst.dst_name,hs.hhs_name,COUNT(hs.hhs_name) AS hh_status FROM hh_household hh
+                                INNER JOIN lst_ward W ON hh.wrd_id = W.wrd_id
+                                INNER JOIN lst_sub_county sct ON W.sct_id = sct.sct_id
+                                INNER JOIN lst_district dst ON sct.dst_id = dst.dst_id
+                                INNER JOIN lst_household_status hs ON hh.hhs_id = hs.hhs_id
+                                WHERE hs.hhs_id = '1'
+                                GROUP BY dst.dst_name,hs.hhs_name
+                                ORDER BY dst.dst_name ASC";
+
+                SqlCommand query = new SqlCommand(strsQL, conn);
+
+                // Begin iterating through the result set
+                SqlDataReader rst = query.ExecuteReader();
+
+
+                while (rst.Read())
+                {
+                    xmlStr.AppendFormat("<set label='{0}' value = '{1}'/>", rst["dst_name"].ToString(), rst["hh_status"].ToString());
+                }
+
+                // End the XML string
+                xmlStr.Append("</chart>");
+
+
+                // Close the result set Reader object and the Connection object
+                rst.Close();
+                conn.Close();
+                Chart hh_chart = new Chart("column2d", "hh_chart", "700", "350", "xml", xmlStr.ToString());
+                //Chart MyFirstChart = new Chart("column2d", "MyFirstChart", "700", "400", "xml", xmlStr.ToString());
+                //Chart MyFirstChart3 = new Chart("pie2d", "MyFirstChart", "700", "400", "xml", xmlStr.ToString());
+                lit_active_households.Text = hh_chart.Render();
+
+                // Call the RenderChart method, pass the correct parameters, and write the return value to the Literal tag
+                //chart_from_db.Text = MyFirstChart.Render(
+                //    "../FusionChartsXT/FCF_MSColumn3D.swf", // Path to chart's SWF
+                //    "",         // Leave blank when using Data String method
+                //    xmlStr.ToString(),  // xmlStr contains the chart data
+                //    "annual_revenue",   // Unique chart ID
+                //    "640", "340",       // Width & Height of chart
+                //    false,              // Disable Debug Mode
+                //    true);              // Register with JavaScript object
+            }
+        }
+
+        protected void LoadChart_beneficiaries()
+        {
+            // Construct the connection string to interface with the SQL Server Database
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["SOCY_MIS"].ToString());
+
+            // Initialize the string which would contain the chart data in XML format
+            StringBuilder xmlStr = new StringBuilder();
+
+            // Provide the relevant customization attributes to the chart
+            xmlStr.Append("<chart caption='Number of Active OVCs by district' xAxisName='District' yAxisName='Total OVC' showValues='0' formatNumberScale='0' showBorder='1' theme='zune'>");
+
+            // Create a SQLConnection object 
+            using (conn)
+            {
+                // Establish the connection with the database
+                conn.Open();
+
+                // Construct and execute SQL query which would return the total amount of sales for each year
+                string strsQL = @"SELECT dst.dst_name,hs.hhs_name,COUNT(hs.hhs_name) AS hh_status FROM hh_household_member hhm 
+                                INNER JOIN hh_household hh ON hhm.hh_id = hh.hh_id
+                                INNER JOIN lst_ward W ON hh.wrd_id = W.wrd_id
+                                INNER JOIN lst_sub_county sct ON W.sct_id = sct.sct_id
+                                INNER JOIN lst_district dst ON sct.dst_id = dst.dst_id
+                                INNER JOIN lst_household_status hs ON hh.hhs_id = hs.hhs_id
+                                WHERE hs.hhs_id = '1'
+                                GROUP BY dst.dst_name,hs.hhs_name
+                                ORDER BY dst.dst_name ASC";
+
+                SqlCommand query = new SqlCommand(strsQL, conn);
+
+                // Begin iterating through the result set
+                SqlDataReader rst = query.ExecuteReader();
+
+
+                while (rst.Read())
+                {
+                    xmlStr.AppendFormat("<set label='{0}' value = '{1}'/>", rst["dst_name"].ToString(), rst["hh_status"].ToString());
+                }
+
+                // End the XML string
+                xmlStr.Append("</chart>");
+
+
+                // Close the result set Reader object and the Connection object
+                rst.Close();
+                conn.Close();
+                Chart hhm_chart = new Chart("column2d", "hhm_chart", "700", "350", "xml", xmlStr.ToString());
+                //Chart MyFirstChart = new Chart("column2d", "MyFirstChart", "700", "400", "xml", xmlStr.ToString());
+                //Chart MyFirstChart3 = new Chart("pie2d", "MyFirstChart", "700", "400", "xml", xmlStr.ToString());
+                lit_active_household_members.Text = hhm_chart.Render();
+
+                // Call the RenderChart method, pass the correct parameters, and write the return value to the Literal tag
+                //chart_from_db.Text = MyFirstChart.Render(
+                //    "../FusionChartsXT/FCF_MSColumn3D.swf", // Path to chart's SWF
+                //    "",         // Leave blank when using Data String method
+                //    xmlStr.ToString(),  // xmlStr contains the chart data
+                //    "annual_revenue",   // Unique chart ID
+                //    "640", "340",       // Width & Height of chart
+                //    false,              // Disable Debug Mode
+                //    true);              // Register with JavaScript object
+            }
         }
 
         protected void SetQuarterName()
@@ -52,56 +185,56 @@ namespace SOCY_WEBAppTest
             //Response.Redirect("CapturedDataReports.aspx");
         }
 
-        protected void return_Stats()
-        {
-            lblTotalHouseholds.Text = Lookups.ReturnLookupsStats("return_total_hh").ToString();
-            lblTotalBen.Text = Lookups.ReturnLookupsStats("return_total_ben").ToString();
-            lblTotalSILCGroups.Text = Lookups.ReturnLookupsStats("return_total_silk_grps").ToString();
-            lblSilcMembers.Text = Lookups.ReturnLookupsStats("return_total_silk_grps_members").ToString();
-        }
+        //protected void return_Stats()
+        //{
+        //    lblTotalHouseholds.Text = Lookups.ReturnLookupsStats("return_total_hh").ToString();
+        //    lblTotalBen.Text = Lookups.ReturnLookupsStats("return_total_ben").ToString();
+        //    lblTotalSILCGroups.Text = Lookups.ReturnLookupsStats("return_total_silk_grps").ToString();
+        //    lblSilcMembers.Text = Lookups.ReturnLookupsStats("return_total_silk_grps_members").ToString();
+        //}
 
         protected void btnLogOut_Click(object sender, EventArgs e)
         {
             SystemConstants.LogOut("LogIn");
         }
 
-        protected void returnDataEntryReports()
-        {
-            if (HttpContext.Current.Cache["DataEntryReports"] != null)
-            {
-                DataEntryChart.DataSource = HttpContext.Current.Cache["DataEntryReports"];
-                DataEntryChart.DataBind();
-                //DataEntryChart.Series["Series1"].SetCustomProperty("PixelPointWidth", "80");
-                //DataEntryChart.Series["Series2"].SetCustomProperty("PixelPointWidth", "80");
-                //DataEntryChart.Series["Series3"].SetCustomProperty("PixelPointWidth", "80");
-                //DataEntryChart.Series["Series4"].SetCustomProperty("PixelPointWidth", "80");
-                //DataEntryChart.Series["Series5"].SetCustomProperty("PixelPointWidth", "80");
-                //DataEntryChart.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
-                //gdvDataEntry.DataSource = HttpContext.Current.Cache["DataEntryReports"];
-                //gdvDataEntry.DataBind();
-            }
-            else
-            {
-                CacheItemRemovedCallback onCacheITemRemoved = new CacheItemRemovedCallback(DataEntryReports_CacheItemRemovedCallback);
-                SqlCacheDependency sqlDependency = new SqlCacheDependency("SOCY_LIVE", "hh_household_home_visit_member");
-                dt = Lookups.ReturnDataEntryStats();
-                Cache.Insert("DataEntryReports", dt, sqlDependency,DateTime.Now.AddHours(24),Cache.NoSlidingExpiration,CacheItemPriority.Default, onCacheITemRemoved);
-                if (dt.Rows.Count > 0)
-                {
-                    DataEntryChart.DataSource = dt;
-                    DataEntryChart.DataBind();
+        //protected void returnDataEntryReports()
+        //{
+        //    if (HttpContext.Current.Cache["DataEntryReports"] != null)
+        //    {
+        //        DataEntryChart.DataSource = HttpContext.Current.Cache["DataEntryReports"];
+        //        DataEntryChart.DataBind();
+        //        //DataEntryChart.Series["Series1"].SetCustomProperty("PixelPointWidth", "80");
+        //        //DataEntryChart.Series["Series2"].SetCustomProperty("PixelPointWidth", "80");
+        //        //DataEntryChart.Series["Series3"].SetCustomProperty("PixelPointWidth", "80");
+        //        //DataEntryChart.Series["Series4"].SetCustomProperty("PixelPointWidth", "80");
+        //        //DataEntryChart.Series["Series5"].SetCustomProperty("PixelPointWidth", "80");
+        //        //DataEntryChart.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
+        //        //gdvDataEntry.DataSource = HttpContext.Current.Cache["DataEntryReports"];
+        //        //gdvDataEntry.DataBind();
+        //    }
+        //    else
+        //    {
+        //        CacheItemRemovedCallback onCacheITemRemoved = new CacheItemRemovedCallback(DataEntryReports_CacheItemRemovedCallback);
+        //        SqlCacheDependency sqlDependency = new SqlCacheDependency("SOCY_LIVE", "hh_household_home_visit_member");
+        //        dt = Lookups.ReturnDataEntryStats();
+        //        Cache.Insert("DataEntryReports", dt, sqlDependency,DateTime.Now.AddHours(24),Cache.NoSlidingExpiration,CacheItemPriority.Default, onCacheITemRemoved);
+        //        if (dt.Rows.Count > 0)
+        //        {
+        //            DataEntryChart.DataSource = dt;
+        //            DataEntryChart.DataBind();
 
-                    //DataEntryChart.Series["Series1"].SetCustomProperty("PixelPointWidth", "80");
-                    //DataEntryChart.Series["Series2"].SetCustomProperty("PixelPointWidth", "80");
-                    //DataEntryChart.Series["Series3"].SetCustomProperty("PixelPointWidth", "80");
-                    //DataEntryChart.Series["Series4"].SetCustomProperty("PixelPointWidth", "80");
-                    //DataEntryChart.Series["Series5"].SetCustomProperty("PixelPointWidth", "80");
-                    //DataEntryChart.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
-                    //gdvDataEntry.DataSource = dt;
-                    //gdvDataEntry.DataBind();
-                }
-            }
-        }
+        //            //DataEntryChart.Series["Series1"].SetCustomProperty("PixelPointWidth", "80");
+        //            //DataEntryChart.Series["Series2"].SetCustomProperty("PixelPointWidth", "80");
+        //            //DataEntryChart.Series["Series3"].SetCustomProperty("PixelPointWidth", "80");
+        //            //DataEntryChart.Series["Series4"].SetCustomProperty("PixelPointWidth", "80");
+        //            //DataEntryChart.Series["Series5"].SetCustomProperty("PixelPointWidth", "80");
+        //            //DataEntryChart.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
+        //            //gdvDataEntry.DataSource = dt;
+        //            //gdvDataEntry.DataBind();
+        //        }
+        //    }
+        //}
 
         public void DataEntryReports_CacheItemRemovedCallback(string key, object value, CacheItemRemovedReason reason)
         {
@@ -261,8 +394,8 @@ namespace SOCY_WEBAppTest
 
         protected void gdvDataEntry_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            gdvDataEntry.PageIndex = e.NewPageIndex;
-            returnDataEntryReports();
+            //gdvDataEntry.PageIndex = e.NewPageIndex;
+            //returnDataEntryReports();
         }
 
         protected void Load_Chart(DataTable dt)

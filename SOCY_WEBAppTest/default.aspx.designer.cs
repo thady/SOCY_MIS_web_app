@@ -67,58 +67,22 @@ namespace SOCY_WEBAppTest {
         protected global::System.Web.UI.WebControls.Label lblAdmin;
         
         /// <summary>
-        /// lblTotalHouseholds control.
+        /// lit_active_households control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalHouseholds;
+        protected global::System.Web.UI.WebControls.Literal lit_active_households;
         
         /// <summary>
-        /// lblTotalBen control.
+        /// lit_active_household_members control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalBen;
-        
-        /// <summary>
-        /// lblTotalSILCGroups control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalSILCGroups;
-        
-        /// <summary>
-        /// lblSilcMembers control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSilcMembers;
-        
-        /// <summary>
-        /// gdvDataEntry control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gdvDataEntry;
-        
-        /// <summary>
-        /// DataEntryChart control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart DataEntryChart;
+        protected global::System.Web.UI.WebControls.Literal lit_active_household_members;
         
         /// <summary>
         /// Label3 control.
