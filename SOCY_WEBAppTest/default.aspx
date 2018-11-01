@@ -40,45 +40,50 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="js/jquery.dynDateTime.min.js" type="text/javascript"></script>
     <script src="js/calendar-en.min.js" type="text/javascript"></script>
     <link href="css/calendar-blue.css" rel="stylesheet" type="text/css" />
-     <script type="text/javascript" src="js/fusioncharts.js"></script>
+
+    <script type="text/javascript" src="js/fusioncharts.js"></script>
     <script type="text/javascript" src="js/themes/fusioncharts.theme.fusion.js"></script>
-     <script type="text/javascript" src="js/themes/fusioncharts.theme.gammel.js"></script>
-     <script type="text/javascript" src="js/themes/fusioncharts.theme.candy.js"></script>
-     <script type="text/javascript" src="js/themes/fusioncharts.theme.zune.js"></script>
-     <script type="text/javascript" src="js/themes/fusioncharts.theme.ocean.js"></script>
-     <script type="text/javascript" src="js/themes/fusioncharts.theme.carbon.js"></script>
+    <script type="text/javascript" src="js/themes/fusioncharts.theme.gammel.js"></script>
+    <script type="text/javascript" src="js/themes/fusioncharts.theme.candy.js"></script>
+    <script type="text/javascript" src="js/themes/fusioncharts.theme.zune.js"></script>
+    <script type="text/javascript" src="js/themes/fusioncharts.theme.ocean.js"></script>
+    <script type="text/javascript" src="js/themes/fusioncharts.theme.carbon.js"></script>
+
+    <style type="text/css">
+        g[class$='creditgroup'] {
+             display:none !important;
+        }
+    </style>
+
+    <!-- Bootstrap -->
+    <script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'></script>
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css'
+        media="screen" />
+    <!-- Bootstrap -->
 
     <script type="text/javascript">
-        $(document).ready(function () {
-            $("#<%=txtCreateDateFrom.ClientID %>").dynDateTime({
-                showsTime: true,
-                ifFormat: "%Y/%m/%d %H:%M",
-                daFormat: "%l;%M %p, %e %m, %Y",
-                align: "BR",
-                electric: false,
-                singleClick: false,
-                displayArea: ".siblings('.dtcDisplayArea')",
-                button: ".next()"
-            });
-        });
 
-        $(document).ready(function () {
-            $("#<%=txtCreateDateTo.ClientID %>").dynDateTime({
-                showsTime: true,
-                ifFormat: "%Y/%m/%d %H:%M",
-                daFormat: "%l;%M %p, %e %m, %Y",
-                align: "BR",
-                electric: false,
-                singleClick: false,
-                displayArea: ".siblings('.dtcDisplayArea')",
-                button: ".next()"
-            });
-        });
+        function getNode_position(Node_id) {
+            alert(Node_id)
+          <%-- document.getElementById('<%=hidden.ClientID %>').value = Node_id;--%>
+
+            '<% CodeBehind(); %>';
+           // ShowPopup();
+
+       }
+
+        function ShowPopup() {
+            $("#MyPopup").modal("show");
+        }
     </script>
+
+
 </head>
 <body>
     <div id="wrapper">
         <form id="frmMain" runat="server">
+            <asp:HiddenField ID="hidden" runat="server" />
             <!-- Navigation -->
             <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
@@ -116,228 +121,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <a href="default.aspx"><i class="fa fa-dashboard fa-fw nav_icon"></i>Dashboard</a>
                             </li>
 
-                            <%--Result Area one and 2 Reports--%>
                             <li>
-                                <a href="#"><i class="fa fa-check-square-o nav_icon"></i>Result Area I Reports<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=agroEnterpriseRanking">Agro Enterprise Ranking Matrix Reports</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=cottageEnterpriseRanking">Cottage Enterprise Selection Reports</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=apprenticeshipSkillAquisitionTracking">Apprenticeship Skill Acquisition Reports</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=YouthTrainingCompletiion">Youth Training Completion Reports</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=YouthAssessmentScoring">Youth Assessment Scoring Reports</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=ActivityTraining">Activity training</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=ApprenticeshipRegister">Apprenticeship register</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=CommunityTrainingRegister">Community Training Register</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=benYouthTrainingInventory">Youth Training Inventory</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=YouthSavingsRegister">Youth Savings Register</a>
-                                    </li>
-                                </ul>
-                                <!-- /.nav-second-level -->
-                            </li>
-
-                            <li>
-                                <a href="#"><i class="fa fa-check-square-o nav_icon"></i>Result Area II Reports<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=AlternativeCarePanel">Alternative care panel</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=CBSDResourceAllocation">CBSD resource allocation</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=CBSDStaffAppraisalTracking">CBSD staff appraisal tracking</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=DistrictOVCCheckList">District OVC check list</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=InstitutionalCareSummary">Institutional care summary</a>
-                                    </li>
-                                </ul>
-                                <!-- /.nav-second-level -->
-                            </li>
-
-                            <%--Result Area one and 2 Reports--%>
-
-                            <%-- Household data reports--%>
-                            <li>
-                                <a href="#"><i class="fa fa-check-square-o nav_icon"></i>Result Area III Reports<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=OVCIdentification">OVC ident. & prioritization</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=Household">Household data</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=HouseholdMember">Household member data</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=HouseholdAssessment">HAT data(Archive)</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=HouseholdAssessment_New">HAT data(New)</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=HouseholdAssessmentMember">HAT member data</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=HouseholdReferral">Household refferal data</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=HomeVisit">Home visit data</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=HomeVisitMember">Home visit member data</a>
-                                    </li>
-                                    <li>
-                                        <a href="Home_visit_aggregate.aspx?reportid=hv_aggregate">Aggregated Home  Visit Report</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=HomeVisitArcive">Home visist archive data</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=HIP">Household improvement plan</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=RASMNEW">Peadiatric Risk Assessment</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=RASM">Risk assessment register(Old)</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=ovcViralLoadMonitoring">OVC Viral Load Monitoring Reports</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=Linkages">Linkages for ES</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=SocialWorker">Social worker data</a>
-                                    </li>
-
-                                </ul>
-                                <!-- /.nav-second-level -->
-                            </li>
-                            <%-- Household data reports--%>
-
-                            <%--Education Subsidy--%>
-                            <li>
-                                <a href="#"><i class="fa fa-check-square-o nav_icon"></i>Education Subsidy<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=beneficiarySchoolReadiness">Beneficiary School Readiness Assessment Reports</a>
-                                    </li>
-                                </ul>
-                                <!-- /.nav-second-level -->
-                            </li>
-                            <%--Education Subsidy--%>
-
-
-                            <%--Dreams and Silk--%>
-                            <li>
-                                <a href="#"><i class="fa fa-check-square-o nav_icon"></i>Dreams & SILC Reports<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=DREAMSEnrolment">DREAMS enrolment</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=SILCGroups">SILC groups</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=SILCGroupMembers">SILC group members</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=SILCFinancialRegister">SILC financial register</a>
-                                    </li>
-                                    <li>
-                                        <a href="CapturedDataReports.aspx?reportid=SILCSavingsRegister">SILC savings register</a>
-                                    </li>
-                                </ul>
-                                <!-- /.nav-second-level -->
-                            </li>
-                            <%-- Dreams and Silk--%>
-
-                            <%--Dreams and Silk--%>
-
-                            <%--  Indicators--%>
-                            <li>
-                                <a href="#"><i class="fa fa-check-square-o nav_icon"></i>
-                                    <asp:Label ID="Label1" runat="server" Text="Indicator Reports"></asp:Label>
-                                    <span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="OvcServe_Indicators.aspx">OVC service indicators</a>
-                                    </li>
-                                    <li>
-                                        <a href="Hiv_stat_indicators.aspx">HIV stat indicators</a>
-                                    </li>
-                                    <li>
-                                        <a href="Ovc_refferal_indicators.aspx">OVC refferal completion indicators</a>
-                                    </li>
-                                    <li>
-                                        <a href="Households_beneficiaries_stats.aspx">Household & beneficiary numbers</a>
-                                    </li>
-                                </ul>
-                                <!-- /.nav-second-level -->
-                            </li>
-
-                            <li>
-                                <a href="#"><i class="fa fa-check-square-o nav_icon"></i>
-                                    <asp:Label ID="Label2" runat="server" Text="Quick Dashboard Reports"></asp:Label>
-                                    <span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="Household_economic_strengthening_reports.aspx">Household Economic Strengthening</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="Result_area_three_dashboard_reports.aspx">Result Area 3 </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="Result_area_three_reports_refferals.aspx">Result Area 3 : Referrals </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="Dreams_dashboard_reports.aspx">Dreams </a>
-                                    </li>
-                                </ul>
-                                <!-- /.nav-second-level -->
-                            </li>
-                            <%-- Indicators--%>
-
-                            <li>
-                                <a href="#"><i class="fa fa-check-square-o nav_icon"></i>
-                                    <asp:Label ID="lblDataEntryTracker" runat="server" Text="Weekly Data Entry Tracker"></asp:Label>
-                                    <span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="data_entry_tracker.aspx">Upload Data Entry Tracker</a>
-                                    </li>
-                                </ul>
-                                <!-- /.nav-second-level -->
+                                <a href="CapturedDataReports.aspx?reportid=Data Management Dashoboard"><i class="fa fa-check-square-o nav_icon"></i>Data Downloads</a>
                             </li>
 
                             <%-- Admin--%>
@@ -369,191 +154,76 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div id="page-wrapper">
                 <div class="graphs">
 
-
-
+                    <div class="panel-footer" style="margin-bottom: 0px"></div>
 
 
                     <div class="col-md-6  stats-info" style="margin-left: 0px; height: 400px">
-                       
+
                         <div class="panel-body" style="height: 400px">
                             <asp:Literal ID="lit_active_households" runat="server"></asp:Literal>
                         </div>
                         <div class="clearfix"></div>
                     </div>
 
-                     <div class="col-md-6  stats-info" style="margin-left: 0px; height: 400px">
-                       
+
+                    <div class="col-md-6  stats-info" style="margin-left: 0px; height: 400px">
+
                         <div class="panel-body" style="height: 400px">
                             <asp:Literal ID="lit_active_household_members" runat="server"></asp:Literal>
                         </div>
                         <div class="clearfix"></div>
                     </div>
 
-
-
-
-
-
                     <div class="clearfix"></div>
 
-                    <div class="col-md-6  stats-info" style="height: 492px; margin-top: 10px">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <asp:Label ID="Label3" runat="server" Text="OVC HIVSTAT(<18):"></asp:Label><asp:Label ID="lblovchiv_stat" runat="server" Text="" ForeColor="#0066ff"></asp:Label>
-                            </h4>
-                        </div>
-                        <div class="panel-body">
-                            <ul class="list-unstyled">
-                                <li>Total OVC(<18) served<div class="text-success pull-right">
-                                    <asp:Label ID="lblTotalovc" runat="server" Text=""></asp:Label>
-                                </div>
-                                </li>
-                                <li>OVC With reported HIV status<div class="text-success pull-right">
-                                    <asp:Label ID="lblTotalovcReportedHIVstatus" runat="server" Text=""></asp:Label>
-                                </div>
-                                </li>
-                                <li>OVC Reported Positive<div class="text-success pull-right">
-                                    <asp:Label ID="lblTotalOVCPositive" runat="server" Text=""></asp:Label>
-                                </div>
-                                </li>
-                                <li>OVC Reported Negative<div class="text-success pull-right">
-                                    <asp:Label ID="lblTotalOVCNegative" runat="server" Text=""></asp:Label>
-                                </div>
-                                </li>
-                                <li>OVC HIV status reported percentage<div class="text-success pull-right">
-                                    <asp:Label ID="lblReportedstatuspercentage" runat="server" Text=""></asp:Label><asp:Label ID="lblpercentage" runat="server" Text="%"></asp:Label>
-                                </div>
-                                </li>
-                                <li>Total OVC +ve on ART<div class="text-success pull-right">
-                                    <asp:Label ID="lblARTYes" runat="server" Text=""></asp:Label>
-                                </div>
-                                </li>
-                                <li>Total OVC +ve on ART and adhering<div class="text-success pull-right">
-                                    <asp:Label ID="lblAdhering" runat="server" Text=""></asp:Label>
-                                </div>
-                                </li>
-                                <li class="last">Total OVC +ve not on ART<div class="text-success pull-right">
-                                    <asp:Label ID="lblARTNo" runat="server" Text=""></asp:Label>
-                                </div>
-                                </li>
-                                <li class="last">Total OVC with unknown status<div class="text-success pull-right">
-                                    <asp:Label ID="lblNostatus" runat="server" Text=""></asp:Label>
-                                </div>
-                                </li>
-                            </ul>
+                    <div class="col-md-6  stats-info" style="margin-left: 0px; height: 400px">
+
+                        <div class="panel-body" style="height: 400px">
+                            <asp:Literal ID="lit_households_served" runat="server"></asp:Literal>
                         </div>
                         <div class="clearfix"></div>
                     </div>
 
 
-                    <div class="col-md-6  stats-info" style="margin-top: 10px; height: 492px">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <asp:Label ID="lblcpaHeader" runat="server" Text="No. of Beneficiaries receiving services by Core Program Area(CPA)"></asp:Label><asp:Label ID="lblCpaQuarter" runat="server" Text="" ForeColor="#0066ff"></asp:Label>
-                            </h4>
-                        </div>
-                        <div class="panel-body" style="height: 450px">
-                            <ul class="list-unstyled">
-                                <li>Enonomic Strengthening:<div class="text-success pull-right">
-                                    <asp:Label ID="lbles" runat="server" Text=""></asp:Label>
-                                </div>
-                                </li>
-                                <li>Food Secuity and nutrition<div class="text-success pull-right">
-                                    <asp:Label ID="lblfsn" runat="server" Text=""></asp:Label>
-                                </div>
-                                </li>
-                                <li>Health & HIV Prevention<div class="text-success pull-right">
-                                    <asp:Label ID="lblhiv" runat="server" Text=""></asp:Label>
-                                </div>
-                                </li>
-                                <li>Protection<div class="text-success pull-right">
-                                    <asp:Label ID="lblprotection" runat="server" Text=""></asp:Label>
-                                </div>
-                                </li>
-                                <li>Education<div class="text-success pull-right">
-                                    <asp:Label ID="lblEducation" runat="server" Text=""></asp:Label>
-                                </div>
-                                </li>
-                                <li>Psychosocial Support<div class="text-success pull-right">
-                                    <asp:Label ID="lblps" runat="server" Text=""></asp:Label>
-                                </div>
-                                </li>
-                            </ul>
+                    <div class="col-md-6  stats-info" style="margin-left: 0px; height: 400px">
+
+                        <div class="panel-body" style="height: 400px">
+                            <asp:Literal ID="lit_ben_served" runat="server"></asp:Literal>
                         </div>
                         <div class="clearfix"></div>
                     </div>
-
-                    <div class="col-md-12  stats-info" style="margin-top: 5px">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <asp:Label ID="Label6" runat="server" Text="OVC_SERV "></asp:Label><asp:Label ID="lblheaderOVCServe" runat="server" Text="" ForeColor="#0066ff"></asp:Label>
-                            </h4>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4" style="height: 500px">
-                                <div class="form-group">
-
-                                    <label for="cbpPartner" class="col-sm-2 control-label">
-                                        <asp:Label ID="lbldistrict" runat="server" Text="District:" Font-Bold="true"></asp:Label></label>
-                                    <div class="col-sm-12">
-                                        <asp:DropDownList ID="cboDistrict" Width="220px" runat="server" ViewStateMode="Enabled" EnableViewState="true" class="form-control1" AutoPostBack="true" OnSelectedIndexChanged="cboDistrict_SelectedIndexChanged"></asp:DropDownList>
-                                    </div>
-
-                                </div>
-
-                                <div class="form-group">
-
-                                    <label for="txtCreateDateFrom" class="col-sm-12 control-label">
-                                        <asp:Label ID="lblDateFrom" runat="server" Text="Date From:"></asp:Label></label>
-                                    <div class="col-sm-12">
-                                        <asp:TextBox ID="txtCreateDateFrom" class="form-control1" Width="220px" runat="server"></asp:TextBox>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-
-                                    <label for="txtCreateDateTo" class="col-sm-2 control-label">
-                                        <asp:Label ID="lblDateTo" runat="server" Text="To:"></asp:Label></label>
-                                    <div class="col-sm-12">
-                                        <asp:TextBox ID="txtCreateDateTo" class="form-control1" Width="220px" runat="server"></asp:TextBox>
-                                    </div>
-                                </div>
-
-                                <div class="panel-footer">
-                                    <div class="row">
-                                        <div class="col-sm-8 col-sm-offset-2" style="margin-top: 5px; margin-left: 0px">
-
-                                            <asp:Button ID="btnFilter" runat="server" class="btn-success btn" OnClick="btnFilter_Click" Text="Filter" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-8">
-                                <asp:GridView ID="gdvOVCServe" AutoGenerateColumns="False" class="table table-striped" runat="server" GridLines="None">
-
-                                    <Columns>
-                                        <asp:BoundField DataField="OVC_SERVE_INDICATOR" HeaderText="Age Groups"
-                                            SortExpression="OVC_SERVE_INDICATOR"></asp:BoundField>
-                                        <asp:BoundField DataField="Target" HeaderText="Target"
-                                            SortExpression="Target"></asp:BoundField>
-                                        <asp:BoundField DataField="Value" HeaderText="Number Served"
-                                            SortExpression="Value"></asp:BoundField>
-                                        <asp:BoundField DataField="percentage_Archived" HeaderText="Percentage Archived"
-                                            SortExpression="percentage_Archived"></asp:BoundField>
-                                    </Columns>
-                                    <HeaderStyle CssClass="warning" Font-Bold="true" />
-                                </asp:GridView>
-
-                            </div>
-
-                        </div>
-
-                        <div class="clearfix"></div>
-                    </div>
-
                     <div class="clearfix"></div>
+
+                    <!-- Modal Popup -->
+                    <div id="MyPopup" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">
+                                        &times;</button>
+                                    <h4 class="modal-title">
+                                        <asp:Label ID="lblTitle" runat="server" Text=""></asp:Label></h4>
+                                </div>
+                                <div class="modal-body">
+                                    <asp:GridView ID="gvCustomers" runat="server" AutoGenerateColumns="false" Font-Names="Arial"
+                                        Font-Size="10pt" RowStyle-BackColor="#A1DCF2" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White">
+                                        <Columns>
+                                            <asp:BoundField ItemStyle-Width="150px" DataField="CustomerID" HeaderText="CustomerID" />
+                                            <asp:BoundField ItemStyle-Width="150px" DataField="ContactName" HeaderText="ContactName" />
+                                            <asp:BoundField ItemStyle-Width="150px" DataField="City" HeaderText="City" />
+                                        </Columns>
+                                    </asp:GridView>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                        Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
 
                     <div class="copy" style="margin-top: 5px">
                         <p>Copyright © 2017 SOCY. All Rights Reserved | <a href="https://www.crs.org/" target="_blank">CRS</a>| Designed by <a href="http://thepalladiumgroup.com/" target="_blank">Palladium Group</a>| Powered by <a href="http://w3layouts.com/" target="_blank">W3layouts</a></p>
