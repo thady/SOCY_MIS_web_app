@@ -34,12 +34,15 @@ namespace SOCY_WEBAppTest
                 }
                 else
                 {
-                   
-                    LoadChart();
-                    LoadChart_beneficiaries();
+
+                    //LoadChart();
+                    //LoadChart_beneficiaries();
                     //LoadChart_beneficiaries_served_in_quarter();
+
+                    _LoadChart_Hiv_positive_Art_status();
                     LoadChart_households_served_in_quarter();
 
+                    _LoadChart_Hiv_stat();
                     _LoadChart_beneficiaries_served_in_quarter();
 
                   //LoadDistrict();
@@ -241,7 +244,7 @@ namespace SOCY_WEBAppTest
 
                 xmlStr.Append("</dataset>");
 
-                xmlStr.Append("<dataset seriesName='Households Target' color='008E8E' anchorBorderColor='008E8E' anchorBgColor='008E8E'>");
+                xmlStr.Append("<dataset seriesName='Active Households' color='008E8E' anchorBorderColor='008E8E' anchorBgColor='008E8E'>");
                 for (int x = 0; x < _dt.Rows.Count; x++)
                 {
                     dtRow = _dt.Rows[x];
@@ -340,6 +343,156 @@ namespace SOCY_WEBAppTest
 
                 Chart hhm_served_chart = new Chart("msline", "hhm_served_chart", "100%", "350", "xml", xmlStr.ToString());
                 lit_ben_served.Text = hhm_served_chart.Render();
+            }
+        }
+
+        protected void _LoadChart_Hiv_stat()
+        {
+            // Construct the connection string to interface with the SQL Server Database
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["SOCY_LIVE"].ToString());
+
+            DataTable _dt = new DataTable();
+            SqlDataAdapter Adapt = null;
+            DataRow dtRow = null;
+
+            // Initialize the string which would contain the chart data in XML format
+            StringBuilder xmlStr = new StringBuilder();
+
+            // Provide the relevant customization attributes to the chart
+            xmlStr.Append("<chart caption='OVC HIV STAT' xAxisName='District' yAxisName='HIV Status' showValues='0' formatNumberScale='0' showBorder='1' theme='zune' labelDisplay='Auto' useEllipsesWhenOverflow = '0' numdivlines='3' numVdivlines='0' rotateNames='1'>");
+            xmlStr.Append("<categories font='Arial' fontSize='11' fontColor='000000'>");
+
+            // Create a SQLConnection object 
+            using (conn)
+            {
+                // Establish the connection with the database
+                conn.Open();
+
+                // Construct and execute SQL query which would return the total amount of sales for each year
+                string strsQL = @"SELECT dst_name, total_negative,total_positive,total_unknown FROM dashboard_hiv_stat
+                                  WHERE dst_name <> 'KASESE' AND dst_name <> 'KAMWENGE'";
+
+                SqlCommand query = new SqlCommand(strsQL, conn);
+                Adapt = new SqlDataAdapter(query);
+                Adapt.Fill(_dt);
+
+
+                #region Chart categories
+                for (int x = 0; x < _dt.Rows.Count; x++)
+                {
+                    dtRow = _dt.Rows[x];
+                    xmlStr.Append("<category label ='" + dtRow["dst_name"].ToString() + "' />");
+                }
+                xmlStr.Append("</categories>");
+
+                #endregion Chart categories
+
+                #region Chart Datasets
+                xmlStr.Append("<dataset seriesName='OVC Reported Negative' color='0963F8' anchorBorderColor='0963F8' anchorBgColor='0963F8'>");
+
+                for (int x = 0; x < _dt.Rows.Count; x++)
+                {
+                    dtRow = _dt.Rows[x];
+                    xmlStr.Append("<set value='" + dtRow["total_negative"].ToString() + "'/>");
+                }
+
+                xmlStr.Append("</dataset>");
+
+                xmlStr.Append("<dataset seriesName='OVC Reported Positive' color='09F846' anchorBorderColor='09F846' anchorBgColor='09F846'>");
+                for (int x = 0; x < _dt.Rows.Count; x++)
+                {
+                    dtRow = _dt.Rows[x];
+                    xmlStr.Append("<set value='" + dtRow["total_positive"].ToString() + "' />");
+                }
+
+                xmlStr.Append("</dataset>");
+
+                xmlStr.Append("<dataset seriesName='Uknown Status' color='F83309' anchorBorderColor='F83309' anchorBgColor='F83309' dashed = '1'>");
+                for (int x = 0; x < _dt.Rows.Count; x++)
+                {
+                    dtRow = _dt.Rows[x];
+                    xmlStr.Append("<set value='" + dtRow["total_unknown"].ToString() + "' />");
+                }
+
+                xmlStr.Append("</dataset>");
+                #endregion Chart Datasets
+
+                // End the XML string
+                xmlStr.Append("</chart>");
+
+                Chart hiv_stat = new Chart("stackedcolumn2d", "hiv_stat", "100%", "350", "xml", xmlStr.ToString());
+                lit_active_household_members.Text = hiv_stat.Render();
+            }
+        }
+
+        protected void _LoadChart_Hiv_positive_Art_status()
+        {
+            // Construct the connection string to interface with the SQL Server Database
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["SOCY_LIVE"].ToString());
+
+            DataTable _dt = new DataTable();
+            SqlDataAdapter Adapt = null;
+            DataRow dtRow = null;
+
+            // Initialize the string which would contain the chart data in XML format
+            StringBuilder xmlStr = new StringBuilder();
+
+            // Provide the relevant customization attributes to the chart
+            xmlStr.Append("<chart caption='HIV positive on ART Vs not on ART' xAxisName='District' yAxisName='HIV ART Status' showValues='0' formatNumberScale='0' showBorder='1' theme='zune' labelDisplay='Auto' useEllipsesWhenOverflow = '0' numdivlines='3' numVdivlines='0' rotateNames='1'>");
+            xmlStr.Append("<categories font='Arial' fontSize='11' fontColor='000000'>");
+
+            // Create a SQLConnection object 
+            using (conn)
+            {
+                // Establish the connection with the database
+                conn.Open();
+
+                // Construct and execute SQL query which would return the total amount of sales for each year
+                string strsQL = @"SELECT dst_name,total_on_art,total_not_on_art FROM dashboard_positive_art
+                                  WHERE dst_name <> 'KASESE' AND dst_name <> 'KAMWENGE'";
+
+                SqlCommand query = new SqlCommand(strsQL, conn);
+                Adapt = new SqlDataAdapter(query);
+                Adapt.Fill(_dt);
+
+
+                #region Chart categories
+                for (int x = 0; x < _dt.Rows.Count; x++)
+                {
+                    dtRow = _dt.Rows[x];
+                    xmlStr.Append("<category label ='" + dtRow["dst_name"].ToString() + "' />");
+                }
+                xmlStr.Append("</categories>");
+
+                #endregion Chart categories
+
+                #region Chart Datasets
+                xmlStr.Append("<dataset seriesName='On ART' color='0963F8' anchorBorderColor='0963F8' anchorBgColor='0963F8'>");
+
+                for (int x = 0; x < _dt.Rows.Count; x++)
+                {
+                    dtRow = _dt.Rows[x];
+                    xmlStr.Append("<set value='" + dtRow["total_on_art"].ToString() + "'/>");
+                }
+
+                xmlStr.Append("</dataset>");
+
+                xmlStr.Append("<dataset seriesName='Not on ART' color='09F846' anchorBorderColor='09F846' anchorBgColor='09F846'>");
+                for (int x = 0; x < _dt.Rows.Count; x++)
+                {
+                    dtRow = _dt.Rows[x];
+                    xmlStr.Append("<set value='" + dtRow["total_not_on_art"].ToString() + "' />");
+                }
+
+                xmlStr.Append("</dataset>");
+
+                #endregion Chart Datasets
+
+                // End the XML string
+                xmlStr.Append("</chart>");
+
+                Chart hiv_art = new Chart("msline", "hiv_art", "100%", "350", "xml", xmlStr.ToString());
+                lit_active_households.Text = hiv_art.Render();
             }
         }
 

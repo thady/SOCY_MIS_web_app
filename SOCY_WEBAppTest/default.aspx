@@ -160,26 +160,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="col-md-6  stats-info" style="margin-left: 0px; height: 400px">
 
                         <div class="panel-body" style="height: 400px">
-                            <asp:Literal ID="lit_active_households" runat="server"></asp:Literal>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-
-
-                    <div class="col-md-6  stats-info" style="margin-left: 0px; height: 400px">
-
-                        <div class="panel-body" style="height: 400px">
-                            <asp:Literal ID="lit_active_household_members" runat="server"></asp:Literal>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-
-                    <div class="clearfix"></div>
-
-                    <div class="col-md-6  stats-info" style="margin-left: 0px; height: 400px">
-
-                        <div class="panel-body" style="height: 400px">
-                            <asp:Literal ID="lit_households_served" runat="server"></asp:Literal>
+                             <asp:Literal ID="lit_households_served" runat="server"></asp:Literal>
+                            
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -189,6 +171,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                         <div class="panel-body" style="height: 400px">
                             <asp:Literal ID="lit_ben_served" runat="server"></asp:Literal>
+                           
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="col-md-6  stats-info" style="margin-left: 0px; height: 400px">
+
+                        <div class="panel-body" style="height: 400px">
+                            <asp:Literal ID="lit_active_household_members" runat="server"></asp:Literal>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+
+                    <div class="col-md-6  stats-info" style="margin-left: 0px; height: 400px">
+
+                        <div class="panel-body" style="height: 400px">
+                            <asp:Literal ID="lit_active_households" runat="server"></asp:Literal>
                         </div>
                         <div class="clearfix"></div>
                     </div>
