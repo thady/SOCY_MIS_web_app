@@ -22,15 +22,6 @@ namespace SOCY_WEBAppTest {
         protected global::System.Web.UI.HtmlControls.HtmlForm frmMain;
         
         /// <summary>
-        /// hidden control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hidden;
-        
-        /// <summary>
         /// btnLogOut control.
         /// </summary>
         /// <remarks>
@@ -85,6 +76,33 @@ namespace SOCY_WEBAppTest {
         protected global::System.Web.UI.WebControls.Literal lit_active_households;
         
         /// <summary>
+        /// hidden control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidden;
+        
+        /// <summary>
+        /// sptext control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl sptext;
+        
+        /// <summary>
+        /// labelTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox labelTextBox;
+        
+        /// <summary>
         /// lblTitle control.
         /// </summary>
         /// <remarks>
@@ -92,6 +110,15 @@ namespace SOCY_WEBAppTest {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTitle;
+        
+        /// <summary>
+        /// lblPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPopup;
         
         /// <summary>
         /// gvCustomers control.

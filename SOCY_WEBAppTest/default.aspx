@@ -51,7 +51,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     <style type="text/css">
         g[class$='creditgroup'] {
-             display:none !important;
+            display: none !important;
         }
     </style>
 
@@ -62,28 +62,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         media="screen" />
     <!-- Bootstrap -->
 
-    <script type="text/javascript">
-
-        function getNode_position(Node_id) {
-            alert(Node_id)
-          <%-- document.getElementById('<%=hidden.ClientID %>').value = Node_id;--%>
-
-            '<% CodeBehind(); %>';
-           // ShowPopup();
-
-       }
-
-        function ShowPopup() {
-            $("#MyPopup").modal("show");
-        }
-    </script>
 
 
 </head>
 <body>
     <div id="wrapper">
         <form id="frmMain" runat="server">
-            <asp:HiddenField ID="hidden" runat="server" />
+
             <!-- Navigation -->
             <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
@@ -160,8 +145,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="col-md-6  stats-info" style="margin-left: 0px; height: 400px">
 
                         <div class="panel-body" style="height: 400px">
-                             <asp:Literal ID="lit_households_served" runat="server"></asp:Literal>
-                            
+                            <asp:Literal ID="lit_households_served" runat="server"></asp:Literal>
+
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -171,7 +156,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                         <div class="panel-body" style="height: 400px">
                             <asp:Literal ID="lit_ben_served" runat="server"></asp:Literal>
-                           
+
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -199,6 +184,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <!-- Modal Popup -->
                     <div id="MyPopup" class="modal fade" role="dialog">
                         <div class="modal-dialog">
+
+                             <asp:HiddenField ID="hidden" runat="server" />
+                            <span id="sptext" runat="server"></span>
+                            <asp:TextBox ID="labelTextBox" BorderColor="White" BorderStyle="None" BorderWidth="0" runat="server"></asp:TextBox>
                             <!-- Modal content-->
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -208,13 +197,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <asp:Label ID="lblTitle" runat="server" Text=""></asp:Label></h4>
                                 </div>
                                 <div class="modal-body">
-                                    <asp:GridView ID="gvCustomers" runat="server" AutoGenerateColumns="false" Font-Names="Arial"
+
+                                    <asp:Label ID="lblPopup" runat="server" Text="Label"></asp:Label>
+                                    <asp:GridView ID="gvCustomers" runat="server" AutoGenerateColumns="true" Font-Names="Arial"
                                         Font-Size="10pt" RowStyle-BackColor="#A1DCF2" HeaderStyle-BackColor="#3AC0F2" HeaderStyle-ForeColor="White">
-                                        <Columns>
-                                            <asp:BoundField ItemStyle-Width="150px" DataField="CustomerID" HeaderText="CustomerID" />
-                                            <asp:BoundField ItemStyle-Width="150px" DataField="ContactName" HeaderText="ContactName" />
-                                            <asp:BoundField ItemStyle-Width="150px" DataField="City" HeaderText="City" />
-                                        </Columns>
                                     </asp:GridView>
                                 </div>
                                 <div class="modal-footer">

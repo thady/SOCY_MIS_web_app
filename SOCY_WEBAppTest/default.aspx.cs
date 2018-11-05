@@ -481,7 +481,11 @@ namespace SOCY_WEBAppTest
                 for (int x = 0; x < _dt.Rows.Count; x++)
                 {
                     dtRow = _dt.Rows[x];
-                    xmlStr.Append("<set value='" + dtRow["total_not_on_art"].ToString() + "' />");
+                    //xmlStr.Append("<set value='" + dtRow["total_not_on_art"].ToString() + "' link='j-getNode_position-245' />");
+                    string district_name = dtRow["dst_name"].ToString();
+
+                    xmlStr.AppendFormat("<set value = '{0}' link='{1}'/>", dtRow["total_not_on_art"].ToString(), Server.UrlEncode("P-detailsWin,width=400,height=300,toolbar=no,scrollbars=no, resizable=no-fusion_graphs_test.aspx?AvgDays=" + dtRow["dst_name"].ToString()));
+                    //xmlStr.Append("<set value='" + dtRow["total_not_on_art"].ToString() + "' link='j-getNode_position-' />");
                 }
 
                 xmlStr.Append("</dataset>");
@@ -500,11 +504,49 @@ namespace SOCY_WEBAppTest
 
         public   void CodeBehind()
         {
-           // hidden.Value = "Bae";
-            //Response. Redirect("http://www.google.com");
-            //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + hidden.Value.ToString() + "');", true);
-            //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('"+ hidden.Value +"');", true);
-            //return "this is a string from C# code behind " + DateTime.Now.ToString();
+            labelTextBox.Text = hidden.Value;
+
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["SOCY_LIVE"].ToString());
+
+            DataTable _dt = new DataTable();
+            SqlDataAdapter Adapt = null;
+
+            using (conn)
+            {
+                // Establish the connection with the database
+                conn.Open();
+
+                // Construct and execute SQL query which would return the total amount of sales for each year
+                string strsQL = @"SELECT dst_name,total_not_on_art,total_on_art FROM dashboard_positive_art WHERE dst_name = '"+ labelTextBox.Text + "'";
+
+                SqlCommand query = new SqlCommand(strsQL, conn);
+                Adapt = new SqlDataAdapter(query);
+                Adapt.Fill(_dt);
+            }
+
+
+                //lblPopup.Text = sptext.InnerHtml;
+
+                //DataTable table = new DataTable();
+                //table.Columns.Add("Dosage", typeof(int));
+                //table.Columns.Add("Drug", typeof(string));
+                //table.Columns.Add("Patient", typeof(string));
+                //table.Columns.Add("Date", typeof(DateTime));
+
+                //// Here we add five DataRows.
+                //table.Rows.Add(25, "Indocin", "David", DateTime.Now);
+                //table.Rows.Add(50, "Enebrel", "Sam", DateTime.Now);
+                //table.Rows.Add(10, "Hydralazine", "Christoff", DateTime.Now);
+                //table.Rows.Add(21, "Combivent", "Janet", DateTime.Now);
+                //table.Rows.Add(100, "Dilantin", "Melanie", DateTime.Now);
+
+                gvCustomers.DataSource = _dt;
+                gvCustomers.DataBind();
+                // hidden.Value = "Bae";
+                // Response. Redirect("http://www.google.com");
+                //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + hidden.Value.ToString() + "');", true);
+                //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('"+ hidden.Value +"');", true);
+                //return "this is a string from C# code behind " + DateTime.Now.ToString();
 
         }
 
