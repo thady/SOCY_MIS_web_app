@@ -314,8 +314,8 @@ namespace SOCY_WEBAppTest
                 {
                     dtRow = _dt.Rows[x];
                     string err = "Kyoteraa";
-                    xmlStr.Append("<set value='" + dtRow["total_hhm"].ToString() + "'/>");
-                }
+                   // xmlStr.Append("<set value='" + dtRow["total_hhm"].ToString() + "'/>");
+                    xmlStr.AppendFormat("<set value = '{0}' link='{1}'/>", dtRow["total_hhm"].ToString(), Server.UrlEncode("P-detailsWin,width=800,height=400,toolbar=no,scrollbars=no, resizable=0-detailed_modal.aspx?token_id=" + dtRow["dst_name"].ToString() + "&modalType=ovc_serve"));                }
 
                 xmlStr.Append("</dataset>");
 
@@ -484,7 +484,7 @@ namespace SOCY_WEBAppTest
                     //xmlStr.Append("<set value='" + dtRow["total_not_on_art"].ToString() + "' link='j-getNode_position-245' />");
                     string district_name = dtRow["dst_name"].ToString();
 
-                    xmlStr.AppendFormat("<set value = '{0}' link='{1}'/>", dtRow["total_not_on_art"].ToString(), Server.UrlEncode("P-detailsWin,width=400,height=300,toolbar=no,scrollbars=no, resizable=no-fusion_graphs_test.aspx?AvgDays=" + dtRow["dst_name"].ToString()));
+                    xmlStr.AppendFormat("<set value = '{0}' link='{1}'/>", dtRow["total_not_on_art"].ToString(), Server.UrlEncode("P-detailsWin,width=800,height=400,toolbar=no,scrollbars=no, resizable=0-detailed_modal.aspx?token_id=" + dtRow["dst_name"].ToString() + "&modalType=hiv_art"));
                     //xmlStr.Append("<set value='" + dtRow["total_not_on_art"].ToString() + "' link='j-getNode_position-' />");
                 }
 

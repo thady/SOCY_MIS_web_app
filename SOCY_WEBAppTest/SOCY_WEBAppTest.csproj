@@ -87,6 +87,7 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\calendar-blue.css" />
     <Content Include="css\clndr.css" />
+    <Content Include="css\css_download_button.css" />
     <Content Include="css\custom.css" />
     <Content Include="css\font-awesome.css" />
     <Content Include="css\jqvmap.css" />
@@ -94,6 +95,7 @@
     <Content Include="css\style.css" />
     <Content Include="data_entry_tracker.aspx" />
     <Content Include="default.aspx" />
+    <Content Include="detailed_modal.aspx" />
     <Content Include="Dreams_dashboard_reports.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -124,6 +126,7 @@
     <Content Include="js\d3.v3.js" />
     <Content Include="js\fusioncharts.js" />
     <Content Include="WebService1.asmx" />
+    <Content Include="_data_entry_tracker_v2.aspx" />
     <None Include="js\jquery-1.4.1-vsdoc.js" />
     <Content Include="js\jquery-1.4.1.js" />
     <Content Include="js\jquery-1.4.1.min.js" />
@@ -194,6 +197,13 @@
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="detailed_modal.aspx.cs">
+      <DependentUpon>detailed_modal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="detailed_modal.aspx.designer.cs">
+      <DependentUpon>detailed_modal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dreams_dashboard_reports.aspx.cs">
       <DependentUpon>Dreams_dashboard_reports.aspx</DependentUpon>
@@ -303,6 +313,13 @@
     <Compile Include="WebService1.asmx.cs">
       <DependentUpon>WebService1.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="_data_entry_tracker_v2.aspx.cs">
+      <DependentUpon>_data_entry_tracker_v2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_data_entry_tracker_v2.aspx.designer.cs">
+      <DependentUpon>_data_entry_tracker_v2.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

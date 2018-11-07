@@ -23,6 +23,66 @@ namespace SOCY_WEBAppTest.AppCode
         public static string tracker_date_from = string.Empty;
         public static string tracker_date_to = string.Empty;
         public static string tracker_id = string.Empty;
+
+        public static string usr_id_create = string.Empty;
+        public static DateTime tracker_begin_date = DateTime.Now;
+        public static DateTime tracker_end_date = DateTime.Now;
+        public static int t_ipt_total_received = 0;
+        public static int t_ipt_total_entered = 0;
+        public static int t_hat_total_received = 0;
+        public static int t_hat_total_entered = 0;
+        public static int t_hip_total_received = 0;
+        public static int t_hip_total_entered = 0;
+        public static int t_hv_total_received = 0;
+        public static int t_hv_total_entered = 0;
+        public static int t_rat_total_received = 0;
+        public static int t_rat_total_entered = 0;
+        public static int t_linkage_total_received = 0;
+        public static int t_linkage_total_entered = 0;
+        public static int t_refferal_total_received = 0;
+        public static int t_refferal_total_entered = 0;
+        public static int t_edu_subsidy_total_received = 0;
+        public static int t_edu_subsidy_total_entered = 0;
+        public static int t_cTraining_SILC_total_received = 0;
+        public static int t_cTraining_SILC_total_entered = 0;
+        public static int t_cTraining_youth_total_received = 0;
+        public static int t_cTraining_youth_total_entered = 0;
+        public static int t_youth_savings_total_received = 0;
+        public static int t_youth_savings_total_entered = 0;
+        public static int t_appre_progress_total_received = 0;
+        public static int t_appre_progress_total_entered = 0;
+        public static int t_training_inventory_total_received = 0;
+        public static int t_training_inventory_total_entered = 0;
+        public static int t_appre_skill_aqui_total_received = 0;
+        public static int t_appre_skill_aqui_total_entered = 0;
+        public static int t_training_comple_total_received = 0;
+        public static int t_training_comple_total_entered = 0;
+        public static int t_youth_ass_toolkit_total_received = 0;
+        public static int t_youth_ass_toolkit_total_entered = 0;
+        public static int t_youth_tracer_total_received = 0;
+        public static int t_youth_tracer_total_entered = 0;
+        public static int t_dovcc_total_received = 0;
+        public static int t_dovcc_total_entered = 0;
+        public static int t_sovcc_total_received = 0;
+        public static int t_sovcc_total_entered = 0;
+        public static int t_cbsd_resource_alloc_total_received = 0;
+        public static int t_cbsd_resource_alloc_total_entered = 0;
+        public static int t_cbsd_staff_appra_total_received = 0;
+        public static int t_cbsd_staff_appra_total_entered = 0;
+        public static int t_reintergration_total_received = 0;
+        public static int t_reintergration_total_entered = 0;
+        public static int t_dreams_registration_total_received = 0;
+        public static int t_dreams_registration_total_entered = 0;
+        public static int t_hct_total_received = 0;
+        public static int t_hct_total_entered = 0;
+        public static int t_dreams_partner_total_received = 0;
+        public static int t_dreams_partner_total_entered = 0;
+        public static int t_sunovuyo_total_received = 0;
+        public static int t_sunovuyo_total_entered = 0;
+        public static int t_dreams_stepping_stones_total_received = 0;
+        public static int t_dreams_stepping_stones_total_entered = 0;
+        public static string t_comments = string.Empty;
+
         #endregion Variables
 
 
@@ -190,6 +250,74 @@ namespace SOCY_WEBAppTest.AppCode
             }
 
             return count;
+        }
+
+        public static int save_data_entry_tracker()
+        {
+
+            string strSQL = string.Empty;
+            int InsertResult = 0;
+            try
+            {
+                strSQL = @"INSERT INTO [dbo].[um_weekly_dst_data_entry_tracker]
+           ([dst_id] ,[usr_id_create] ,[tracker_begin_date],[tracker_end_date] ,[t_ipt_total_received] ,[t_ipt_total_entered],[t_hat_total_received],[t_hat_total_entered]
+           ,[t_hip_total_received],[t_hip_total_entered],[t_hv_total_received] ,[t_hv_total_entered],[t_rat_total_received],[t_rat_total_entered] ,[t_linkage_total_received]
+           ,[t_linkage_total_entered] ,[t_refferal_total_received],[t_refferal_total_entered],[t_edu_subsidy_total_received],[t_edu_subsidy_total_entered],[t_cTraining_SILC_total_received]
+           ,[t_cTraining_SILC_total_entered] ,[t_cTraining_youth_total_received] ,[t_cTraining_youth_total_entered],[t_youth_savings_total_received],[t_youth_savings_total_entered],[t_appre_progress_total_received]
+           ,[t_appre_progress_total_entered] ,[t_training_inventory_total_received] ,[t_training_inventory_total_entered],[t_appre_skill_aqui_total_received],[t_appre_skill_aqui_total_entered] ,[t_training_comple_total_received]
+           ,[t_training_comple_total_entered] ,[t_youth_ass_toolkit_total_received],[t_youth_ass_toolkit_total_entered],[t_youth_tracer_total_received],[t_youth_tracer_total_entered] ,[t_dovcc_total_received],[t_dovcc_total_entered]
+           ,[t_sovcc_total_received],[t_sovcc_total_entered] ,[t_cbsd_resource_alloc_total_received] ,[t_cbsd_resource_alloc_total_entered],[t_cbsd_staff_appra_total_received],[t_cbsd_staff_appra_total_entered] ,[t_reintergration_total_received]
+           ,[t_reintergration_total_entered],[t_dreams_registration_total_received],[t_dreams_registration_total_entered],[t_hct_total_received],[t_hct_total_entered],[t_dreams_partner_total_received],[t_dreams_partner_total_entered]
+           ,[t_sunovuyo_total_received],[t_sunovuyo_total_entered],[t_dreams_stepping_stones_total_received],[t_dreams_stepping_stones_total_entered],[t_comments])
+     VALUES
+           ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}' ,'{14}' ,'{15}','{16}' ,'{17}','{18}','{19}','{20}'
+           ,'{21}' ,'{22}','{23}','{24}','{25}','{26}','{27}' ,'{28}','{29}' ,'{30}','{31}','{32}','{33}','{34}' ,'{35}','{36}' ,'{37}' ,'{38}','{39}','{40}'
+           ,'{41}','{42}' ,'{43}','{44}','{45}' ,'{46}','{47}' ,'{48}' ,'{49}','{50}','{51}' ,'{52}','{53}' ,'{54}','{55}' ,'{56}','{57}' ,'{58}')";
+
+                strSQL = string.Format(strSQL, dst_id, usr_id_create, tracker_begin_date, tracker_end_date, t_ipt_total_received, t_ipt_total_entered, t_hat_total_received, t_hat_total_entered
+                        , t_hip_total_received, t_hip_total_entered, t_hv_total_received, t_hv_total_entered, t_rat_total_received, t_rat_total_entered, t_linkage_total_received
+                        , t_linkage_total_entered, t_refferal_total_received, t_refferal_total_entered, t_edu_subsidy_total_received, t_edu_subsidy_total_entered, t_cTraining_SILC_total_received
+                        , t_cTraining_SILC_total_entered, t_cTraining_youth_total_received, t_cTraining_youth_total_entered, t_youth_savings_total_received, t_youth_savings_total_entered, t_appre_progress_total_received
+                        , t_appre_progress_total_entered, t_training_inventory_total_received, t_training_inventory_total_entered, t_appre_skill_aqui_total_received, t_appre_skill_aqui_total_entered, t_training_comple_total_received
+                        , t_training_comple_total_entered, t_youth_ass_toolkit_total_received, t_youth_ass_toolkit_total_entered, t_youth_tracer_total_received, t_youth_tracer_total_entered, t_dovcc_total_received, t_dovcc_total_entered
+                        , t_sovcc_total_received, t_sovcc_total_entered, t_cbsd_resource_alloc_total_received, t_cbsd_resource_alloc_total_entered, t_cbsd_staff_appra_total_received, t_cbsd_staff_appra_total_entered, t_reintergration_total_received
+                        , t_reintergration_total_entered, t_dreams_registration_total_received, t_dreams_registration_total_entered, t_hct_total_received, t_hct_total_entered, t_dreams_partner_total_received, t_dreams_partner_total_entered
+                        , t_sunovuyo_total_received, t_sunovuyo_total_entered, t_dreams_stepping_stones_total_received, t_dreams_stepping_stones_total_entered, t_comments
+                        );
+
+                using (conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["SOCY_LIVE"].ToString()))
+                using (SqlCommand cmd = new SqlCommand(strSQL, conn))
+                {
+                    cmd.CommandTimeout = 3600;
+
+                    cmd.CommandType = CommandType.Text;
+
+                    if (conn.State == ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
+
+                    cmd.ExecuteNonQuery();
+                    //InsertResult = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    cmd.Parameters.Clear();
+
+                    if (conn.State != ConnectionState.Closed)
+                    {
+                        conn.Close();
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                if (conn.State == ConnectionState.Open) { conn.Close(); }
+            }
+            return InsertResult;
         }
     }
 }
