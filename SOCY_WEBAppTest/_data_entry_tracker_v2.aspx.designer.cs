@@ -31,6 +31,42 @@ namespace SOCY_WEBAppTest {
         protected global::System.Web.UI.HtmlControls.HtmlForm parent;
         
         /// <summary>
+        /// cbo_district control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cbo_district;
+        
+        /// <summary>
+        /// txt_date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_date;
+        
+        /// <summary>
+        /// lblToolsReceived control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblToolsReceived;
+        
+        /// <summary>
+        /// lblToolsEntered control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblToolsEntered;
+        
+        /// <summary>
         /// txt_ipt control.
         /// </summary>
         /// <remarks>
@@ -38,6 +74,15 @@ namespace SOCY_WEBAppTest {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_ipt;
+        
+        /// <summary>
+        /// txt_ipt_entered control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_ipt_entered;
         
         /// <summary>
         /// txt_hat control.
@@ -49,6 +94,15 @@ namespace SOCY_WEBAppTest {
         protected global::System.Web.UI.WebControls.TextBox txt_hat;
         
         /// <summary>
+        /// txt_hat_entered control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_hat_entered;
+        
+        /// <summary>
         /// txt_hip control.
         /// </summary>
         /// <remarks>
@@ -56,6 +110,15 @@ namespace SOCY_WEBAppTest {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_hip;
+        
+        /// <summary>
+        /// txt_hip_entered control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_hip_entered;
         
         /// <summary>
         /// txt_home_visit control.
@@ -67,6 +130,15 @@ namespace SOCY_WEBAppTest {
         protected global::System.Web.UI.WebControls.TextBox txt_home_visit;
         
         /// <summary>
+        /// txt_home_visit_entered control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_home_visit_entered;
+        
+        /// <summary>
         /// txt_rat control.
         /// </summary>
         /// <remarks>
@@ -76,6 +148,15 @@ namespace SOCY_WEBAppTest {
         protected global::System.Web.UI.WebControls.TextBox txt_rat;
         
         /// <summary>
+        /// txt_rat_entered control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_rat_entered;
+        
+        /// <summary>
         /// txt_linkages control.
         /// </summary>
         /// <remarks>
@@ -83,6 +164,15 @@ namespace SOCY_WEBAppTest {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_linkages;
+        
+        /// <summary>
+        /// txt_linkages_entered control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_linkages_entered;
         
         /// <summary>
         /// txt_referal control.
@@ -101,6 +191,24 @@ namespace SOCY_WEBAppTest {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_referal_entered;
+        
+        /// <summary>
+        /// txt_viral_load control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_viral_load;
+        
+        /// <summary>
+        /// txt_viral_load_entered control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_viral_load_entered;
         
         /// <summary>
         /// txt_edu_subsidy control.
@@ -461,6 +569,42 @@ namespace SOCY_WEBAppTest {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_stepping_stones_entered;
+        
+        /// <summary>
+        /// txt_dreams_screening control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_dreams_screening;
+        
+        /// <summary>
+        /// txt_dreams_screening_entered control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_dreams_screening_entered;
+        
+        /// <summary>
+        /// txt_sasa_session control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_sasa_session;
+        
+        /// <summary>
+        /// txt_sasa_session_entered control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_sasa_session_entered;
         
         /// <summary>
         /// txt_comment control.

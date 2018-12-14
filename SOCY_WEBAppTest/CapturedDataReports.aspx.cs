@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NReco;
 
 using System.Data;
 using SOCY_WEBAppTest.AppCode;
@@ -1629,6 +1630,33 @@ namespace SOCY_WEBAppTest
                         ds = ReportsCapturedDataDB.GetReportData();
                         break;
 
+                    case utilSOCYWeb.CRHouseholdsNotVisited:
+                        ReportsCapturedDataDB.reportType = utilSOCYWeb.CRHouseholdsNotVisited;
+                        ReportsCapturedDataDB.prt_id = cboPartner.SelectedValue.ToString() != string.Empty ? cboPartner.SelectedValue.ToString() : null;
+                        ReportsCapturedDataDB.cso = cboCSO.SelectedValue != string.Empty ? cboCSO.SelectedValue.ToString() : null;
+                        ReportsCapturedDataDB.region = cboRegion.SelectedValue != string.Empty ? cboRegion.SelectedValue.ToString() : null;
+                        ReportsCapturedDataDB.district = cboDistrict.SelectedValue != string.Empty ? cboDistrict.SelectedValue.ToString() : null;
+                        ReportsCapturedDataDB.subcounty = cboSubCounty.SelectedValue != string.Empty ? cboSubCounty.SelectedValue.ToString() : null;
+                        ReportsCapturedDataDB.parish = cboParish.SelectedValue != string.Empty ? cboParish.SelectedValue.ToString() : null;
+
+                        #region Dates
+                        if (txtCreateDateFrom.Text != string.Empty)
+                        {
+                            ReportsCapturedDataDB.datecreateFrom = Convert.ToDateTime(txtCreateDateFrom.Text);
+                        }
+                        else
+                            ReportsCapturedDataDB.datecreateFrom = null;
+
+
+                        if (txtCreateDateTo.Text != string.Empty) { ReportsCapturedDataDB.datecreateTo = Convert.ToDateTime(txtCreateDateTo.Text); }
+                        else
+                            ReportsCapturedDataDB.datecreateTo = null;
+
+                        #endregion Dates 
+
+                        ds = ReportsCapturedDataDB.GetReportData();
+                        break;
+
                 }
 
                 if (ds != null)
@@ -1712,31 +1740,37 @@ namespace SOCY_WEBAppTest
                 case "OVCIdentification":
                     lblReportTitle.Text = "OVC Identification & Prioritization";
                     lblDateFrom.Text = "OVC Identifiction Date from:";
+                    Hide_checkbox_Div();
                     break;
                 case "Household":
                     lblReportTitle.Text = "Household Data";
                     Hide_Date_Div();
+                    Hide_checkbox_Div();
                     break;
                 case "HouseholdMember":
                     lblReportTitle.Text = "Household Member Data";
                     lblDateFrom.Text = "HAT Date from:";
-                    //Hide_Date_Div();
+                    Hide_checkbox_Div();
                     break;
                 case "HouseholdAssessment":
                     lblReportTitle.Text = "HAT Data";
                     lblDateFrom.Text = "HAT Date from:";
+                    Hide_checkbox_Div();
                     break;
                 case "HouseholdAssessmentMember":
                     lblReportTitle.Text = "HAT Member Data";
                     lblDateFrom.Text = "HAT Date from:";
+                    Hide_checkbox_Div();
                     break;
                 case "HouseholdReferral":
                     lblReportTitle.Text = "Household Refferal Data";
                     lblDateFrom.Text = "Referal Date From:";
+                    Hide_checkbox_Div();
                     break;
                 case "HomeVisit":
                     lblReportTitle.Text = "Home Visit Data";
                     lblDateFrom.Text = "Home Visit Date From:";
+                    Hide_checkbox_Div();
                     break;
                 case "HomeVisitMember":
                     lblReportTitle.Text = "Home Visit Member Data";
@@ -1745,108 +1779,137 @@ namespace SOCY_WEBAppTest
                 case "HomeVisitArcive":
                     lblReportTitle.Text = "Home Visist Archive Data";
                     lblDateFrom.Text = "Home Visit Date From:";
+                    Hide_checkbox_Div();
                     break;
                 case "SocialWorker":
                     lblReportTitle.Text = "Social Worker Data";
                     Hide_Date_Div();
+                    Hide_checkbox_Div();
                     break;
                 case "ActivityTraining":
                     lblReportTitle.Text = "Activity Training";
                     lblDateFrom.Text = "Activity Training Date From:";
+                    Hide_checkbox_Div();
                     break;
                 case "ApprenticeshipRegister":
                     lblReportTitle.Text = "Apprenticeship Register";
                     lblDateFrom.Text = "Register Date From:";
+                    Hide_checkbox_Div();
                     break;
                 case "ServiceRegister":
                     lblReportTitle.Text = "Service Register";
                     Hide_Date_Div();
+                    Hide_checkbox_Div();
                     break;
                 case "AlternativeCarePanel":
                     lblReportTitle.Text = "Alternative Care Panel";
                     lblDateFrom.Text = "Date From:";
+                    Hide_checkbox_Div();
                     break;
                 case "CBSDResourceAllocation":
                     lblReportTitle.Text = "CBSD Resource Allocation";
                     lblDateFrom.Text = "Date From:";
+                    Hide_checkbox_Div();
                     break;
                 case "CBSDStaffAppraisalTracking":
                     lblReportTitle.Text = "CBSD Staff Appraisal Tracking";
                     lblDateFrom.Text = "Appraisal Tracking Date From:";
+                    Hide_checkbox_Div();
                     break;
                 case "DistrictOVCCheckList":
                     lblReportTitle.Text = "District OVC Check List";
                     lblDateFrom.Text = "OVC Check List Date From:";
+                    Hide_checkbox_Div();
                     break;
                 case "InstitutionalCareSummary":
                     lblReportTitle.Text = "Institutional Care Summary";
                     lblDateFrom.Text = "Date From:";
+                    Hide_checkbox_Div();
                     break;
                 case "DREAMSEnrolment":
                     lblReportTitle.Text = "DREAMS Enrolment";
                     Hide_Date_Div();
+                    Hide_checkbox_Div();
                     break;
                 case "SILCGroups":
                     lblReportTitle.Text = "SILC Groups";
                     Hide_Date_Div();
+                    Hide_checkbox_Div();
                     break;
                 case "SILCGroupMembers":
                     lblReportTitle.Text = "SILC Group Members";
                     Hide_Date_Div();
+                    Hide_checkbox_Div();
                     break;
                 case "SILCFinancialRegister":
                     lblReportTitle.Text = "SILC Financial Register";
                     Hide_Date_Div();
+                    Hide_checkbox_Div();
                     break;
                 case "SILCSavingsRegister":
                     lblReportTitle.Text = "SILC Savings Register";
                     Hide_Date_Div();
+                    Hide_checkbox_Div();
                     break;
                     case "HIP":
                     lblReportTitle.Text = "Household Improvement Plan";
                     lblDateFrom.Text = "HIP Date From:";
+                    Hide_checkbox_Div();
                     break;
                 case "RASM":
                     lblReportTitle.Text = "Risk Assessment Register Archive";
                     lblDateFrom.Text = "Date From:";
+                    Hide_checkbox_Div();
                     break;
                 case "RASMNEW":
                     lblReportTitle.Text = "Risk Assessment Register";
-                    lblDateFrom.Text = "Date From:"; 
+                    lblDateFrom.Text = "Date From:";
+                    Hide_checkbox_Div();
                     break;
                 case "Linkages":
                     lblReportTitle.Text = "Linkages for Economic Strengthening";
                     Hide_Date_Div();
+                    Hide_checkbox_Div();
                     break;
                 case "CommunityTrainingRegister":
                     lblReportTitle.Text = "Community Training Register";
+                    Hide_checkbox_Div();
                     break;
                 case "HouseholdAssessment_New":
                     lblReportTitle.Text = "Household Assessment ";
+                    Hide_checkbox_Div();
                     break;
                 case "agroEnterpriseRanking":
                     lblReportTitle.Text = "Agro-Enterprise Ranking and Selection Tool Report";
+                    Hide_checkbox_Div();
                     break;
                 case "cottageEnterpriseRanking":
                     lblReportTitle.Text = "Enterprise Selection Tool for Cottage Training Report";
+                    Hide_checkbox_Div();
                     break;
                 case "apprenticeshipSkillAquisitionTracking":
                     lblReportTitle.Text = "Apprenticeship Skill Acquisition Tracking Report";
+                    Hide_checkbox_Div();
                     break;
                 case "YouthTrainingCompletiion":
                     lblReportTitle.Text = "Youth Training Completion Report";
+                    Hide_checkbox_Div();
                     break;
                 case "YouthAssessmentScoring":
                     lblReportTitle.Text = "Youth Assessment Scoring Report";
+                    Hide_checkbox_Div();
                     break;
                 case "ovcViralLoadMonitoring":
                     lblReportTitle.Text = "OVC Viral Load Monitoring Report";
+                    Hide_checkbox_Div();
                     break;
                 case "beneficiarySchoolReadiness":
                     lblReportTitle.Text = "Beneficiary School Readiness Assessment Report";
+                    Hide_checkbox_Div();
                     break;
                 case "YouthSavingsRegister":
                     lblReportTitle.Text = "Youth Savings Report";
+                    Hide_checkbox_Div();
                     break;
             }
         }
@@ -1855,6 +1918,11 @@ namespace SOCY_WEBAppTest
         protected void Hide_Date_Div()
         {
             datediv.Visible = false;
+        }
+
+        protected void Hide_checkbox_Div()
+        {
+            chk_div.Visible = false;
         }
 
         protected void btnLogOut_Click(object sender, EventArgs e)
@@ -1902,6 +1970,20 @@ namespace SOCY_WEBAppTest
                 }
                 #endregion Set district
 
+            }
+        }
+
+        protected void chkNotvisited_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkNotvisited.Checked == true)
+            {
+                Session["reportid"] = utilSOCYWeb.CRHouseholdsNotVisited;
+                lblReportTitle.Text = "Households Not Visited";
+            }
+            else
+            {
+                Session["reportid"] = Request.QueryString["reportid"] != null ? Request.QueryString["reportid"].ToString() : string.Empty;
+                setReportTitle_ToggleDateVisibility("HomeVisitMember");
             }
         }
     }

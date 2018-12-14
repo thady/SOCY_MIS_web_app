@@ -238,6 +238,24 @@ namespace SOCY_WEBAppTest {
         protected global::System.Web.UI.WebControls.TextBox txtCreateDateTo;
         
         /// <summary>
+        /// chk_div control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl chk_div;
+        
+        /// <summary>
+        /// chkNotvisited control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkNotvisited;
+        
+        /// <summary>
         /// btnsearch control.
         /// </summary>
         /// <remarks>

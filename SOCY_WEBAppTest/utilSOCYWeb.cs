@@ -121,6 +121,7 @@ namespace SOCY_WEBAppTest
         public const string cRCLinkages = "Linkages";
         public const string CRCommunityTrainingRegister = "CommunityTrainingRegister";
         public const string CRHomeVisitAggregate = "hv_aggregate";
+        public const string CRHouseholdsNotVisited = "HouseholdsNotVisited"; 
 
         public const string CRagroEnterpriseRanking = "agroEnterpriseRanking";
         public const string CRcottageEnterpriseRanking = "cottageEnterpriseRanking";

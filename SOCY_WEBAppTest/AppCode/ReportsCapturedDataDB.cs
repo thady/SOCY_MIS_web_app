@@ -115,6 +115,7 @@ namespace SOCY_WEBAppTest.AppCode
                     if (conn.State != ConnectionState.Closed)
                     {
                         conn.Close();
+                        conn.Dispose();
                     }
                 }
             }
@@ -127,6 +128,7 @@ namespace SOCY_WEBAppTest.AppCode
                 if (conn.State == ConnectionState.Open)
                 {
                     conn.Close();
+                    conn.Dispose();
                 }
             }
 

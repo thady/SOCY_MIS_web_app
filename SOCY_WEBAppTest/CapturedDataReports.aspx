@@ -32,6 +32,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="js/jquery.dynDateTime.min.js" type="text/javascript"></script>
     <script src="js/calendar-en.min.js" type="text/javascript"></script>
     <link href="css/calendar-blue.css" rel="stylesheet" type="text/css" />
+
+      <style type="text/css">
+    .modal
+    {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: black;
+        z-index: 99;
+        opacity: 0.8;
+        filter: alpha(opacity=80);
+        -moz-opacity: 0.8;
+        min-height: 100%;
+        width: 100%;
+    }
+    .loading
+    {
+        font-family: Arial;
+        font-size: 10pt;
+        border: 5px solid #67CFF5;
+        width: 200px;
+        height: 100px;
+        display: none;
+        position: fixed;
+        background-color: White;
+        z-index: 999;
+    }
+</style>
+
     <script type="text/javascript">
         $(document).ready(function () {
             $("#<%=txtCreateDateFrom.ClientID %>").dynDateTime({
@@ -48,17 +77,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         $(document).ready(function () {
             $("#<%=txtCreateDateTo.ClientID %>").dynDateTime({
-                 showsTime: true,
-                 ifFormat: "%Y/%m/%d %H:%M",
-                 daFormat: "%l;%M %p, %e %m, %Y",
-                 align: "BR",
-                 electric: false,
-                 singleClick: false,
-                 displayArea: ".siblings('.dtcDisplayArea')",
-                 button: ".next()"
-             });
-         });
+                showsTime: true,
+                ifFormat: "%Y/%m/%d %H:%M",
+                daFormat: "%l;%M %p, %e %m, %Y",
+                align: "BR",
+                electric: false,
+                singleClick: false,
+                displayArea: ".siblings('.dtcDisplayArea')",
+                button: ".next()"
+            });
+        });
     </script>
+
+     <script type="text/javascript">
+    function ShowProgress() {
+        setTimeout(function () {
+            var modal = $('<div />');
+            modal.addClass("modal");
+            $('body').append(modal);
+            var loading = $(".loading");
+            loading.show();
+            var top = Math.max($(window).height() / 2 - loading[0].offsetHeight / 2, 0);
+            var left = Math.max($(window).width() / 2 - loading[0].offsetWidth / 2, 0);
+            loading.css({ top: top, left: left });
+        }, 200);
+    }
+    $('form').live("submit", function () {
+        ShowProgress();
+    });
+</script>
+
 </head>
 <body>
     <form id="frmMain" runat="server">
@@ -130,10 +178,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <a href="CapturedDataReports.aspx?reportid=CommunityTrainingRegister">Community Training Register</a>
                                     </li>
 
-                                     <li>
+                                    <li>
                                         <a href="CapturedDataReports.aspx?reportid=benYouthTrainingInventory">Youth Training Inventory</a>
                                     </li>
-                                     <li>
+                                    <li>
                                         <a href="CapturedDataReports.aspx?reportid=YouthSavingsRegister">Youth Savings Register</a>
                                     </li>
                                 </ul>
@@ -317,7 +365,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="data_entry_tracker.aspx">Upload Data Entry Tracker</a>
+                                        <a href="_data_entry_tracker_v2.aspx">Create New Tracker</a>
+                                    </li>
+                                    <li>
+                                        <a href="_data_entry_tracker_v2_view.aspx?Token_id=View Trackers">View My Trackers</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -413,6 +464,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="col-sm-3">
                                             <asp:TextBox ID="txtCreateDateTo" class="form-control1" runat="server"></asp:TextBox>
                                         </div>
+                                    </div>
+
+                                    <div id="chk_div" class="form-group" runat="server">
+
+                                        <label for="txtCreateDateFrom" class="col-sm-2 control-label">
+                                            </label>
+                                        <div class="col-sm-3">
+                                            <asp:CheckBox ID="chkNotvisited" class="form-control1" Text="Export households not visited" OnCheckedChanged="chkNotvisited_CheckedChanged" BackColor="#ffff99" runat="server" AutoPostBack="true" />
+                                        </div>
+                                    </div>
+
+                                    <div class="loading" align="center">
+                                        Loading Data. Please wait...<br />
+                                        <br />
+                                        <img src="images/loader.gif" alt="" />
                                     </div>
 
                                     <div class="panel-footer">

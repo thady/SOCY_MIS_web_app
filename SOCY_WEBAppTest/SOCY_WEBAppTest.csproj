@@ -40,13 +40,37 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.2.16.3.0\lib\net40\CsvHelper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DocumentFormat.OpenXml">
       <HintPath>..\..\SOCY_WEB\packages\DocumentFormat.OpenXmlSDK.2.0\lib\Net35\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.0.4.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.0.4\lib\net20\EPPlus.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="FusionCharts">
       <HintPath>Dlls\FusionCharts.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NReco.PivotData, Version=1.3.7.0, Culture=neutral, PublicKeyToken=9ad162d4af1a824f, processorArchitecture=MSIL">
+      <HintPath>..\packages\NReco.PivotData.1.3.7\lib\net40\NReco.PivotData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NReco.PivotData.Extensions, Version=1.4.2.0, Culture=neutral, PublicKeyToken=9ad162d4af1a824f, processorArchitecture=MSIL">
+      <HintPath>..\packages\NReco.PivotData.Extensions.1.4.2\lib\net40\NReco.PivotData.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PSAUtilsWeb">
       <HintPath>..\..\..\..\..\Desktop\SOCY Transfer\SOCY Transfer\PSAUtilsWeb\PSAUtilsWeb\obj\Debug\PSAUtilsWeb.dll</HintPath>
     </Reference>
@@ -84,6 +108,7 @@
     <Content Include="CapturedDataReports.aspx" />
     <Content Include="ChartSample.aspx" />
     <Content Include="Cluster_data_capture_offices.aspx" />
+    <Content Include="cr_DataEntryTrackerReport.aspx" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\calendar-blue.css" />
     <Content Include="css\clndr.css" />
@@ -93,6 +118,7 @@
     <Content Include="css\jqvmap.css" />
     <Content Include="css\lines.css" />
     <Content Include="css\style.css" />
+    <Content Include="DataPivot.aspx" />
     <Content Include="data_entry_tracker.aspx" />
     <Content Include="default.aspx" />
     <Content Include="detailed_modal.aspx" />
@@ -127,6 +153,7 @@
     <Content Include="js\fusioncharts.js" />
     <Content Include="WebService1.asmx" />
     <Content Include="_data_entry_tracker_v2.aspx" />
+    <Content Include="_data_entry_tracker_v2_view.aspx" />
     <None Include="js\jquery-1.4.1-vsdoc.js" />
     <Content Include="js\jquery-1.4.1.js" />
     <Content Include="js\jquery-1.4.1.min.js" />
@@ -161,7 +188,14 @@
     <Compile Include="AppCode\Lookups.cs" />
     <Compile Include="AppCode\ReportsCapturedDataDB.cs" />
     <Compile Include="AppCode\Result_Area_three_reports.cs" />
+    <Compile Include="AppCode\Set_Report_logons.cs" />
     <Compile Include="AppCode\SystemConstants.cs" />
+    <Compile Include="Bushenyi_sub_report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Bushenyi_sub_report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CapturedDataReports.aspx.cs">
       <DependentUpon>CapturedDataReports.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -182,6 +216,26 @@
     </Compile>
     <Compile Include="Cluster_data_capture_offices.aspx.designer.cs">
       <DependentUpon>Cluster_data_capture_offices.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cr_DataEntryTrackerReport.aspx.cs">
+      <DependentUpon>cr_DataEntryTrackerReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cr_DataEntryTrackerReport.aspx.designer.cs">
+      <DependentUpon>cr_DataEntryTrackerReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cr_DataEntryTracker.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cr_DataEntryTracker.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataPivot.aspx.cs">
+      <DependentUpon>DataPivot.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataPivot.aspx.designer.cs">
+      <DependentUpon>DataPivot.aspx</DependentUpon>
     </Compile>
     <Compile Include="data_entry_tracker.aspx.cs">
       <DependentUpon>data_entry_tracker.aspx</DependentUpon>
@@ -321,6 +375,13 @@
     <Compile Include="_data_entry_tracker_v2.aspx.designer.cs">
       <DependentUpon>_data_entry_tracker_v2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="_data_entry_tracker_v2_view.aspx.cs">
+      <DependentUpon>_data_entry_tracker_v2_view.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_data_entry_tracker_v2_view.aspx.designer.cs">
+      <DependentUpon>_data_entry_tracker_v2_view.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\fontawesome-webfont.eot" />
@@ -332,6 +393,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\SOCY_WEBAppTest.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -344,10 +407,24 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="crystalreportviewers13\" />
     <Folder Include="DataEntryTracker\" />
     <Folder Include="Dlls\" />
     <Folder Include="FusionChartsXT\" />
     <Folder Include="Report_Download\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Bushenyi_sub_report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Bushenyi_sub_report.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cr_DataEntryTracker.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cr_DataEntryTracker.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

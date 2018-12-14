@@ -105,6 +105,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <li>
                                 <a href="default.aspx"><i class="fa fa-dashboard fa-fw nav_icon"></i>Dashboard</a>
                             </li>
+                             <li>
+                                <a href="DataPivot.aspx"><i class="fa fa-dashboard fa-fw nav_icon"></i>Pivot Tables</a>
+                            </li>
 
                             <li>
                                 <a href="CapturedDataReports.aspx?reportid=Data Management Dashoboard"><i class="fa fa-check-square-o nav_icon"></i>Data Downloads</a>
@@ -214,7 +217,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
                     <div class="copy" style="margin-top: 5px">
-                        <p>Copyright © 2017 SOCY. All Rights Reserved | <a href="https://www.crs.org/" target="_blank">CRS</a>| Designed by <a href="http://thepalladiumgroup.com/" target="_blank">Palladium Group</a>| Powered by <a href="http://w3layouts.com/" target="_blank">W3layouts</a></p>
+                        <p>Copyright © 2017 SOCY. All Rights Reserved | <a href="https://www.crs.org/" target="_blank">CRS</a>| Designed by <a href="http://thepalladiumgroup.com/" target="_blank">Palladium Group</a>| Powered by <a href="http://w3layouts.com/" target="_blank"></a></p>
                     </div>
                 </div>
             </div>
